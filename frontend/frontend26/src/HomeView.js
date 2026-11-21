@@ -568,6 +568,7 @@ export default function HomeView() {
         <MapContainer
           center={defaultPosition}
           zoom={13}
+          maxZoom={19}
           scrollWheelZoom={false}
           style={{ height: '100%', width: '100%', backgroundColor: '#1e293b' }}
         >
@@ -577,9 +578,13 @@ export default function HomeView() {
           <TileLayer
             attribution='Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ'
             url="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}"
+            maxNativeZoom={16}
+            maxZoom={19}
           />
           <TileLayer
             url="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}"
+            maxNativeZoom={16}
+            maxZoom={19}
           />
 
           {location && (
