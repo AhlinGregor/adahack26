@@ -15,17 +15,46 @@ L.Icon.Default.mergeOptions({
   shadowUrl: markerShadow,
 });
 
+// ============================================================================
+// ENDPOINT BUILDER (Literal URLs so exact query params are sent as-is)
+// ============================================================================
+const POLLUTANTS_URL =
+  process.env.REACT_APP_POLLUTANTS_API_URL || 'https://adahack.duckdns.org/api/v1/';
+
+const STATIONS_URL =
+  process.env.REACT_APP_STATIONS_API_URL || 'https://adahack.duckdns.org/api/v1/stations';
+
+const READINGS_ORIGIN =
+  process.env.REACT_APP_READINGS_BASE_URL || 'https://adahack.duckdns.org/api/v1/readings';
+
+function getPollutantsEndpoint() {
+  return `${POLLUTANTS_URL}`;
+}
+
+function getStationsEndpoint() {
+  return `${STATIONS_URL}`;
+}
+
+function getReadingsEndpoint(pollutant) {
+  const safePollutant = pollutant || 'NO2';
+  const start = '2025-05-05T01';
+  const end = '2025-05-05T02';
+  const compact = 'false';
+  return `${READINGS_ORIGIN}?pollutant=${safePollutant}&start=${start}&end=${end}&compact=${compact}`;
+}
+// ============================================================================
+
 function RecenterMap({ coords }) {
   const map = useMap();
   useEffect(() => {
     if (coords) {
-      map.flyTo([coords.latitude, coords.longitude], 16, { duration: 1.5 });
+      const targetZoom = Math.min(16, map.getMaxZoom());
+      map.flyTo([coords.latitude, coords.longitude], targetZoom, { duration: 1.5 });
     }
   }, [coords, map]);
   return null;
 }
 
-// Forces Leaflet to recalculate tile bounds when entering/exiting fullscreen
 function MapResizeHandler({ isFullscreen }) {
   const map = useMap();
   useEffect(() => {
@@ -44,7 +73,6 @@ function CooperativeGestures({ onShowHint, isFullscreen }) {
   useEffect(() => {
     const container = map.getContainer();
 
-    // In fullscreen mode, allow normal scrolling/dragging since page scroll isn't needed
     if (isFullscreen) {
       map.scrollWheelZoom.enable();
       map.dragging.enable();
@@ -102,52 +130,417 @@ function CooperativeGestures({ onShowHint, isFullscreen }) {
   return null;
 }
 
+function valueToRgb(value) {
+  const stops = [
+    { v: 0, rgb: [16, 185, 129] },
+    { v: 50, rgb: [250, 204, 21] },
+    { v: 100, rgb: [249, 115, 22] },
+    { v: 150, rgb: [239, 68, 68] },
+  ];
+
+  if (value <= stops[0].v) return stops[0].rgb;
+  if (value >= stops[stops.length - 1].v) return stops[stops.length - 1].rgb;
+
+  for (let i = 0; i < stops.length - 1; i++) {
+    const a = stops[i];
+    const b = stops[i + 1];
+    if (value >= a.v && value <= b.v) {
+      const t = (value - a.v) / (b.v - a.v);
+      return [
+        Math.round(a.rgb[0] + (b.rgb[0] - a.rgb[0]) * t),
+        Math.round(a.rgb[1] + (b.rgb[1] - a.rgb[1]) * t),
+        Math.round(a.rgb[2] + (b.rgb[2] - a.rgb[2]) * t),
+      ];
+    }
+  }
+  return stops[0].rgb;
+}
+
+function distanceKm(lat1, lon1, lat2, lon2) {
+  const dLat = ((lat2 - lat1) * Math.PI) / 180;
+  const dLon = ((lon2 - lon1) * Math.PI) / 180;
+  const avgLat = (((lat1 + lat2) / 2) * Math.PI) / 180;
+  const x = dLon * Math.cos(avgLat);
+  return 6371 * Math.sqrt(dLat * dLat + x * x);
+}
+
+function extractStationValue(station) {
+  const rawList = Array.isArray(station?.readings)
+    ? station.readings
+    : Array.isArray(station?.reading)
+    ? station.reading
+    : [];
+
+  const validValues = rawList
+    .map((entry) => {
+      if (entry && typeof entry === 'object' && entry.value !== undefined) {
+        return parseFloat(entry.value);
+      }
+      return parseFloat(entry);
+    })
+    .filter((num) => !Number.isNaN(num));
+
+  if (validValues.length === 0) return null;
+  return validValues[validValues.length - 1];
+}
+
+function StationPollutionLayer({ points, maxRadiusKm = 35, power = 2 }) {
+  const map = useMap();
+
+  useEffect(() => {
+    if (!points || points.length === 0) return;
+
+    const CustomGridLayer = L.GridLayer.extend({
+      createTile: function (coords) {
+        const tile = document.createElement('canvas');
+        const tileSize = this.getTileSize();
+        const step = 4;
+        tile.width = tileSize.x;
+        tile.height = tileSize.y;
+
+        const ctx = tile.getContext('2d');
+        const nwPoint = coords.scaleBy(tileSize);
+
+        for (let py = 0; py < tileSize.y; py += step) {
+          for (let px = 0; px < tileSize.x; px += step) {
+            const worldPoint = L.point(nwPoint.x + px + step / 2, nwPoint.y + py + step / 2);
+            const latLng = map.unproject(worldPoint, coords.z);
+
+            let weightSum = 0;
+            let rSum = 0;
+            let gSum = 0;
+            let bSum = 0;
+            let minDist = Infinity;
+            let exactMatch = null;
+
+            for (let i = 0; i < points.length; i++) {
+              const pt = points[i];
+              const d = distanceKm(latLng.lat, latLng.lng, pt.lat, pt.lon);
+              if (d < minDist) minDist = d;
+
+              if (d < 0.05) {
+                exactMatch = pt;
+                break;
+              }
+
+              if (d <= maxRadiusKm) {
+                const w = 1 / Math.pow(d, power);
+                const [r, g, b] = valueToRgb(pt.value);
+                weightSum += w;
+                rSum += w * r;
+                gSum += w * g;
+                bSum += w * b;
+              }
+            }
+
+            let fillStyle = null;
+            if (exactMatch) {
+              const [r, g, b] = valueToRgb(exactMatch.value);
+              fillStyle = `rgba(${r}, ${g}, ${b}, 0.55)`;
+            } else if (weightSum > 0) {
+              const r = Math.round(rSum / weightSum);
+              const g = Math.round(gSum / weightSum);
+              const b = Math.round(bSum / weightSum);
+              const falloff = Math.max(0, 1 - minDist / maxRadiusKm);
+              const alpha = (0.55 * Math.pow(falloff, 0.7)).toFixed(3);
+              fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`;
+            }
+
+            if (fillStyle) {
+              ctx.fillStyle = fillStyle;
+              ctx.fillRect(px, py, step, step);
+            }
+          }
+        }
+
+        return tile;
+      },
+    });
+
+    const layer = new CustomGridLayer({ opacity: 1, zIndex: 400 });
+    layer.addTo(map);
+
+    return () => {
+      map.removeLayer(layer);
+    };
+  }, [map, points, maxRadiusKm, power]);
+
+  return null;
+}
+
 function getAqiGradient(value) {
   const num = parseFloat(value);
-  if (isNaN(num) || value === '') return 'linear-gradient(135deg, #1e293b, #334155)';
+  if (isNaN(num) || value === '' || value === null) {
+    return 'linear-gradient(135deg, #1e293b, #334155)';
+  }
   if (num <= 50) return 'linear-gradient(135deg, #065f46, #10b981)';
   if (num <= 100) return 'linear-gradient(135deg, #92400e, #f59e0b)';
   if (num <= 150) return 'linear-gradient(135deg, #9a3412, #f97316)';
   return 'linear-gradient(135deg, #991b1b, #ef4444)';
 }
 
-function getWindGradient(value) {
+function getNo2Gradient(value) {
   const num = parseFloat(value);
-  if (isNaN(num) || value === '') return 'linear-gradient(135deg, #1e293b, #334155)';
-  if (num <= 15) return 'linear-gradient(135deg, #075985, #0ea5e9)';
-  if (num <= 35) return 'linear-gradient(135deg, #115e59, #14b8a6)';
-  if (num <= 60) return 'linear-gradient(135deg, #854d0e, #eab308)';
+  if (isNaN(num) || value === '' || value === null) {
+    return 'linear-gradient(135deg, #1e293b, #334155)';
+  }
+  if (num <= 25) return 'linear-gradient(135deg, #075985, #0ea5e9)';
+  if (num <= 40) return 'linear-gradient(135deg, #115e59, #14b8a6)';
+  if (num <= 100) return 'linear-gradient(135deg, #854d0e, #eab308)';
   return 'linear-gradient(135deg, #581c87, #a855f7)';
 }
 
-const LAYER_OPTIONS = [
-  { id: 'wind', label: 'Wind' },
-  { id: 'airQuality', label: 'Air Quality' },
-  { id: 'uvIndex', label: 'UV Index' },
-  { id: 'rainfall', label: 'Rainfall' },
-];
+async function fetchJsonWithDetails(url, signal) {
+  console.log('[API Request]:', url);
+  const res = await fetch(url, { signal });
+  if (!res.ok) {
+    let detail = '';
+    try {
+      const errBody = await res.json();
+      detail = typeof errBody === 'string' ? errBody : JSON.stringify(errBody);
+    } catch {
+      detail = await res.text().catch(() => '');
+    }
+    throw new Error(`HTTP ${res.status} on ${url}${detail ? ` — ${detail}` : ''}`);
+  }
+  return res.json();
+}
 
 export default function HomeView() {
-  const [selectedLayer, setSelectedLayer] = useState(null);
+  const [pollutants, setPollutants] = useState([]);
+  const [pollutantsLoading, setPollutantsLoading] = useState(true);
+  const [pollutantsError, setPollutantsError] = useState(null);
+
+  const [selectedPollutant, setSelectedPollutant] = useState('NO2');
+
+  const [stations, setStations] = useState([]);
+  const [stationsError, setStationsError] = useState(null);
+
+  const [paintedPoints, setPaintedPoints] = useState([]);
+  const [readingsLoading, setReadingsLoading] = useState(false);
+  const [readingsError, setReadingsError] = useState(null);
+
   const [location, setLocation] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
-  // Track whether viewport is desktop (>= 768px)
+  // Left card: average of whichever pollutant is toggled on
+  const [airQuality, setAirQuality] = useState('—');
+
+  // Right card: always fetches and displays real NO2 data from the backend
+  const [no2Value, setNo2Value] = useState(null);
+  const [no2Loading, setNo2Loading] = useState(true);
+
   const [isDesktop, setIsDesktop] = useState(() =>
     typeof window !== 'undefined' ? window.innerWidth >= 768 : true
   );
 
-  // Gesture hint state
   const [gestureHint, setGestureHint] = useState(null);
   const hintTimeoutRef = useRef(null);
 
-  // Sample read-only values
-  const [airQuality] = useState('42');
-  const [windSpeed] = useState('18');
+  const defaultPosition = [46.0569, 14.5058];
 
-  const defaultPosition = [51.505, -0.09];
+  // 1. Fetch pollutants list from https://adahack.duckdns.org/api/v1/ (body.pollutants)
+  useEffect(() => {
+    let cancelled = false;
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 8000);
+
+    async function loadPollutants() {
+      setPollutantsLoading(true);
+      setPollutantsError(null);
+
+      try {
+        const url = getPollutantsEndpoint();
+        const data = await fetchJsonWithDetails(url, controller.signal);
+        const list = Array.isArray(data?.pollutants) ? data.pollutants : [];
+
+        if (!cancelled) {
+          setPollutants(list);
+          if (list.length > 0) {
+            setSelectedPollutant((prev) => (list.includes(prev) ? prev : list[0]));
+          }
+        }
+      } catch (err) {
+        if (!cancelled) {
+          setPollutantsError(
+            err.name === 'AbortError' ? 'Pollutants request timed out after 8s' : err.message
+          );
+        }
+      } finally {
+        clearTimeout(timeoutId);
+        if (!cancelled) {
+          setPollutantsLoading(false);
+        }
+      }
+    }
+
+    loadPollutants();
+    return () => {
+      cancelled = true;
+      clearTimeout(timeoutId);
+      controller.abort();
+    };
+  }, []);
+
+  // 2. Fetch weather station coordinates (stations[i].details.lat & lon)
+  useEffect(() => {
+    let cancelled = false;
+    const controller = new AbortController();
+
+    async function loadStations() {
+      setStationsError(null);
+      try {
+        const url = getStationsEndpoint();
+        const data = await fetchJsonWithDetails(url, controller.signal);
+        const rawStations = Array.isArray(data?.stations) ? data.stations : [];
+
+        const parsed = rawStations
+          .map((st, idx) => ({
+            id: st?.id ?? st?.station_id ?? st?.details?.station_id ?? `station_${idx}`,
+            index: idx,
+            lat: parseFloat(st?.details?.lat ?? st?.lat),
+            lon: parseFloat(st?.details?.lon ?? st?.lon),
+          }))
+          .filter((st) => !Number.isNaN(st.lat) && !Number.isNaN(st.lon));
+
+        if (!cancelled) {
+          setStations(parsed);
+        }
+      } catch (err) {
+        if (!cancelled && err.name !== 'AbortError') {
+          setStationsError(err.message);
+        }
+      }
+    }
+
+    loadStations();
+    return () => {
+      cancelled = true;
+      controller.abort();
+    };
+  }, []);
+
+  // 3. Dedicated fetch for the hardcoded NO2 card from the backend
+  useEffect(() => {
+    let cancelled = false;
+    const controller = new AbortController();
+
+    async function loadNo2CardData() {
+      setNo2Loading(true);
+      try {
+        const url = getReadingsEndpoint('NO2');
+        const data = await fetchJsonWithDetails(url, controller.signal);
+        const readingStations = Array.isArray(data?.stations) ? data.stations : [];
+
+        const values = readingStations
+          .map((st) => extractStationValue(st))
+          .filter((val) => val !== null && !Number.isNaN(val));
+
+        if (!cancelled) {
+          if (values.length > 0) {
+            const avg = values.reduce((acc, v) => acc + v, 0) / values.length;
+            setNo2Value(avg.toFixed(1));
+          } else {
+            setNo2Value(null);
+          }
+        }
+      } catch (err) {
+        if (!cancelled && err.name !== 'AbortError') {
+          console.error('Failed to load NO2 card data:', err);
+          setNo2Value(null);
+        }
+      } finally {
+        if (!cancelled) {
+          setNo2Loading(false);
+        }
+      }
+    }
+
+    loadNo2CardData();
+    return () => {
+      cancelled = true;
+      controller.abort();
+    };
+  }, []);
+
+  // 4. Fetch readings for active map pollutant and map station readings[].value to coordinates
+  useEffect(() => {
+    if (!selectedPollutant) return;
+
+    let cancelled = false;
+    const controller = new AbortController();
+
+    async function loadReadingsForPollutant() {
+      setReadingsLoading(true);
+      setReadingsError(null);
+
+      try {
+        const url = getReadingsEndpoint(selectedPollutant);
+        const data = await fetchJsonWithDetails(url, controller.signal);
+        const readingStations = Array.isArray(data?.stations) ? data.stations : [];
+
+        const combined = readingStations
+          .map((st, idx) => {
+            const val = extractStationValue(st);
+            if (val === null || Number.isNaN(val)) return null;
+
+            const stationId = st?.id ?? st?.station_id ?? st?.details?.station_id ?? null;
+            const matchedById = stationId
+              ? stations.find((s) => s.id && String(s.id) === String(stationId))
+              : null;
+            const matchedByIndex = stations[idx];
+
+            const lat = parseFloat(
+              st?.details?.lat ?? st?.lat ?? matchedById?.lat ?? matchedByIndex?.lat
+            );
+            const lon = parseFloat(
+              st?.details?.lon ?? st?.lon ?? matchedById?.lon ?? matchedByIndex?.lon
+            );
+
+            if (Number.isNaN(lat) || Number.isNaN(lon)) {
+              return null;
+            }
+
+            return {
+              id: stationId || matchedByIndex?.id || `station_${idx}`,
+              lat,
+              lon,
+              value: val,
+            };
+          })
+          .filter(Boolean);
+
+        if (!cancelled) {
+          setPaintedPoints(combined);
+
+          if (combined.length > 0) {
+            const avg =
+              combined.reduce((acc, item) => acc + item.value, 0) / combined.length;
+            setAirQuality(avg.toFixed(1));
+          } else {
+            setAirQuality('—');
+          }
+        }
+      } catch (err) {
+        if (!cancelled && err.name !== 'AbortError') {
+          setReadingsError(err.message);
+          setPaintedPoints([]);
+        }
+      } finally {
+        if (!cancelled) {
+          setReadingsLoading(false);
+        }
+      }
+    }
+
+    loadReadingsForPollutant();
+    return () => {
+      cancelled = true;
+      controller.abort();
+    };
+  }, [selectedPollutant, stations]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -171,7 +564,6 @@ export default function HomeView() {
     };
   }, []);
 
-  // Allow pressing Escape key on desktop to exit fullscreen
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape' && isFullscreen) {
@@ -182,7 +574,6 @@ export default function HomeView() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isFullscreen]);
 
-  // Lock background page scroll while map is fullscreen
   useEffect(() => {
     document.body.style.overflow = isFullscreen ? 'hidden' : '';
     return () => {
@@ -216,8 +607,8 @@ export default function HomeView() {
     );
   };
 
-  const handleToggleLayer = (id) => {
-    setSelectedLayer((prev) => (prev === id ? null : id));
+  const handleSelectPollutant = (pollutant) => {
+    setSelectedPollutant(pollutant);
   };
 
   const showDesktopFullscreenBar = isFullscreen && isDesktop;
@@ -229,7 +620,7 @@ export default function HomeView() {
         left: 0,
         width: '100vw',
         height: '100dvh',
-        zIndex: 2000, // Above fixed navbar (zIndex 1100)
+        zIndex: 2000,
         borderRadius: 0,
         border: 'none',
         margin: 0,
@@ -309,7 +700,24 @@ export default function HomeView() {
         </div>
       )}
 
-      {/* Read-Only Air Quality & Wind Speed Gradient Cards */}
+      {(stationsError || readingsError) && (
+        <div
+          style={{
+            padding: '12px 16px',
+            marginBottom: '16px',
+            borderRadius: '8px',
+            backgroundColor: 'rgba(245, 158, 11, 0.15)',
+            border: '1px solid rgba(245, 158, 11, 0.4)',
+            color: '#fcd34d',
+            fontSize: '14px',
+            wordBreak: 'break-word',
+          }}
+        >
+          {stationsError || readingsError}
+        </div>
+      )}
+
+      {/* Read-Only Selected Pollutant & Live Backend NO2 Gradient Cards */}
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', marginBottom: '20px' }}>
         <div
           style={{
@@ -334,12 +742,12 @@ export default function HomeView() {
               marginBottom: '8px',
             }}
           >
-            Air Quality (AQI)
+            {selectedPollutant} Index
           </label>
           <input
             type="text"
             readOnly
-            value={airQuality || '—'}
+            value={readingsLoading ? 'Loading...' : airQuality || '—'}
             style={{
               width: '100%',
               padding: '10px 12px',
@@ -362,7 +770,7 @@ export default function HomeView() {
             minWidth: '160px',
             padding: '18px 20px',
             borderRadius: '12px',
-            background: getWindGradient(windSpeed),
+            background: getNo2Gradient(no2Value),
             border: '1px solid rgba(255, 255, 255, 0.12)',
             boxShadow: '0 8px 20px rgba(0, 0, 0, 0.25)',
             transition: 'background 0.4s ease',
@@ -379,12 +787,12 @@ export default function HomeView() {
               marginBottom: '8px',
             }}
           >
-            Wind Speed (km/h)
+            NO2 (µg/m³)
           </label>
           <input
             type="text"
             readOnly
-            value={windSpeed ? `${windSpeed} km/h` : '—'}
+            value={no2Loading ? 'Loading...' : no2Value !== null ? `${no2Value} µg/m³` : '—'}
             style={{
               width: '100%',
               padding: '10px 12px',
@@ -404,7 +812,6 @@ export default function HomeView() {
 
       {/* Esri Dark Gray Canvas Map Container */}
       <div style={mapWrapperStyle}>
-        {/* Translucent Gesture Hint Overlay */}
         <div
           style={{
             position: 'absolute',
@@ -435,7 +842,6 @@ export default function HomeView() {
           </span>
         </div>
 
-        {/* Fullscreen Toggle Button (Lower Right Corner) */}
         <button
           type="button"
           onClick={() => setIsFullscreen((prev) => !prev)}
@@ -444,7 +850,7 @@ export default function HomeView() {
           style={{
             position: 'absolute',
             bottom: showDesktopFullscreenBar
-              ? '84px' // Clear of the fixed bottom layer bar on desktop fullscreen
+              ? '84px'
               : isFullscreen
               ? 'calc(24px + env(safe-area-inset-bottom))'
               : '22px',
@@ -482,7 +888,7 @@ export default function HomeView() {
         </button>
 
         {/* Desktop-Only Fixed Bottom Bar in Fullscreen Mode */}
-        {showDesktopFullscreenBar && (
+        {showDesktopFullscreenBar && pollutants.length > 0 && (
           <div
             style={{
               position: 'fixed',
@@ -507,15 +913,15 @@ export default function HomeView() {
                 flexWrap: 'wrap',
               }}
             >
-              {LAYER_OPTIONS.map((option) => {
-                const isOn = selectedLayer === option.id;
+              {pollutants.map((pollutant) => {
+                const isOn = selectedPollutant === pollutant;
                 return (
                   <button
-                    key={option.id}
+                    key={pollutant}
                     type="button"
                     role="switch"
                     aria-checked={isOn}
-                    onClick={() => handleToggleLayer(option.id)}
+                    onClick={() => handleSelectPollutant(pollutant)}
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -531,9 +937,8 @@ export default function HomeView() {
                       transition: 'all 0.2s ease',
                     }}
                   >
-                    <span>{option.label}</span>
+                    <span>{pollutant}</span>
 
-                    {/* Mini Toggle Pill */}
                     <span
                       style={{
                         width: '38px',
@@ -587,6 +992,10 @@ export default function HomeView() {
             maxZoom={19}
           />
 
+          {paintedPoints.length > 0 && (
+            <StationPollutionLayer points={paintedPoints} maxRadiusKm={35} power={2} />
+          )}
+
           {location && (
             <>
               <RecenterMap coords={location} />
@@ -605,7 +1014,7 @@ export default function HomeView() {
         </MapContainer>
       </div>
 
-      {/* Bottom Exclusive Layer Options */}
+      {/* Bottom Exclusive Pollutant Toggles */}
       <div
         style={{
           backgroundColor: '#1e293b',
@@ -614,71 +1023,93 @@ export default function HomeView() {
           overflow: 'hidden',
         }}
       >
-        {LAYER_OPTIONS.map((option, index) => {
-          const isOn = selectedLayer === option.id;
-          return (
-            <div
-              key={option.id}
-              onClick={() => handleToggleLayer(option.id)}
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                padding: '16px 20px',
-                cursor: 'pointer',
-                borderBottom: index < LAYER_OPTIONS.length - 1 ? '1px solid #334155' : 'none',
-                backgroundColor: isOn ? 'rgba(59, 130, 246, 0.08)' : 'transparent',
-                transition: 'background-color 0.2s ease',
-              }}
-            >
-              <span
+        {pollutantsLoading ? (
+          <div style={{ padding: '16px 20px', color: '#94a3b8', fontSize: '14px', textAlign: 'left' }}>
+            Loading pollutants...
+          </div>
+        ) : pollutantsError ? (
+          <div
+            style={{
+              padding: '16px 20px',
+              color: '#fca5a5',
+              fontSize: '14px',
+              textAlign: 'left',
+              wordBreak: 'break-word',
+            }}
+          >
+            Failed to load pollutants: {pollutantsError}
+          </div>
+        ) : pollutants.length === 0 ? (
+          <div style={{ padding: '16px 20px', color: '#94a3b8', fontSize: '14px', textAlign: 'left' }}>
+            No pollutants returned.
+          </div>
+        ) : (
+          pollutants.map((pollutant, index) => {
+            const isOn = selectedPollutant === pollutant;
+            return (
+              <div
+                key={pollutant}
+                onClick={() => handleSelectPollutant(pollutant)}
                 style={{
-                  textAlign: 'left',
-                  fontSize: '15px',
-                  fontWeight: '500',
-                  color: isOn ? '#ffffff' : '#cbd5e1',
-                }}
-              >
-                {option.label}
-              </span>
-
-              <button
-                type="button"
-                role="switch"
-                aria-checked={isOn}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleToggleLayer(option.id);
-                }}
-                style={{
-                  width: '46px',
-                  height: '26px',
-                  borderRadius: '999px',
-                  border: 'none',
-                  padding: '3px',
-                  backgroundColor: isOn ? '#3b82f6' : '#475569',
-                  cursor: 'pointer',
                   display: 'flex',
+                  justifyContent: 'space-between',
                   alignItems: 'center',
+                  padding: '16px 20px',
+                  cursor: 'pointer',
+                  borderBottom: index < pollutants.length - 1 ? '1px solid #334155' : 'none',
+                  backgroundColor: isOn ? 'rgba(59, 130, 246, 0.08)' : 'transparent',
                   transition: 'background-color 0.2s ease',
-                  flexShrink: 0,
                 }}
               >
                 <span
                   style={{
-                    width: '20px',
-                    height: '20px',
-                    borderRadius: '50%',
-                    backgroundColor: '#ffffff',
-                    boxShadow: '0 1px 3px rgba(0, 0, 0, 0.3)',
-                    transform: isOn ? 'translateX(20px)' : 'translateX(0px)',
-                    transition: 'transform 0.2s ease',
+                    textAlign: 'left',
+                    fontSize: '15px',
+                    fontWeight: '500',
+                    color: isOn ? '#ffffff' : '#cbd5e1',
                   }}
-                />
-              </button>
-            </div>
-          );
-        })}
+                >
+                  {pollutant}
+                </span>
+
+                <button
+                  type="button"
+                  role="switch"
+                  aria-checked={isOn}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleSelectPollutant(pollutant);
+                  }}
+                  style={{
+                    width: '46px',
+                    height: '26px',
+                    borderRadius: '999px',
+                    border: 'none',
+                    padding: '3px',
+                    backgroundColor: isOn ? '#3b82f6' : '#475569',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    transition: 'background-color 0.2s ease',
+                    flexShrink: 0,
+                  }}
+                >
+                  <span
+                    style={{
+                      width: '20px',
+                      height: '20px',
+                      borderRadius: '50%',
+                      backgroundColor: '#ffffff',
+                      boxShadow: '0 1px 3px rgba(0, 0, 0, 0.3)',
+                      transform: isOn ? 'translateX(20px)' : 'translateX(0px)',
+                      transition: 'transform 0.2s ease',
+                    }}
+                  />
+                </button>
+              </div>
+            );
+          })
+        )}
       </div>
     </>
   );
