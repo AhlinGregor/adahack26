@@ -37,8 +37,8 @@ function getStationsEndpoint() {
 
 function getReadingsEndpoint(pollutant) {
   const safePollutant = pollutant || 'NO2';
-  const start = '2025-05-05T01';
-  const end = '2025-05-05T02';
+  const start = '2026-11-01T01';
+  const end = '2026-11-22T01';
   const compact = 'false';
   return `${READINGS_ORIGIN}?pollutant=${safePollutant}&start=${start}&end=${end}&compact=${compact}`;
 }
