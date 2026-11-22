@@ -1,0 +1,23 @@
+{
+  "series": "data/model_input/series_hourly.parquet",
+  "out": "artifacts/granite-ttm-lj",
+  "pollutants": "pm10,pm25",
+  "context": 512,
+  "horizon": 24,
+  "stride": 48,
+  "batch_size": 32,
+  "epochs": 10,
+  "lr": 5e-05,
+  "weight_decay": 0.01,
+  "patience": 3,
+  "seed": 42,
+  "threads": 4,
+  "min_hours": 20000,
+  "test_days": 14,
+  "valid_days": 60,
+  "valid_stride": 24,
+  "test_stride": 12,
+  "no_zero_shot": false,
+  "eval_batches": null,
+  "max_train_batches": null
+}

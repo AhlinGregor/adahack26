@@ -1,0 +1,954 @@
+{
+  "base_model": "ibm-granite/granite-timeseries-ttm-r2",
+  "config": {
+    "context_length": 512,
+    "prediction_length": 24,
+    "horizon": 24,
+    "lead_groups": {
+      "1_12": [
+        1,
+        12
+      ],
+      "13_24": [
+        13,
+        24
+      ],
+      "1_24": [
+        1,
+        24
+      ]
+    },
+    "batch_size": 32,
+    "epochs": 10,
+    "learning_rate": 5e-05,
+    "weight_decay": 0.01,
+    "stride": 48,
+    "test_days": 14,
+    "valid_days": 60,
+    "test_stride": 12,
+    "valid_stride": 24,
+    "seed": 42,
+    "pollutants": [
+      "pm10",
+      "pm25"
+    ],
+    "series": [
+      "E403:pm10",
+      "E403:pm25",
+      "E404:pm10",
+      "E404:pm25",
+      "E405:pm10",
+      "E405:pm25",
+      "E413:pm10",
+      "E413:pm25",
+      "E414:pm25",
+      "E415:pm25",
+      "E417:pm25"
+    ]
+  },
+  "splits": {
+    "train": [
+      "2015-12-31 23:00:00+00:00",
+      "2026-09-08 07:00:00+00:00"
+    ],
+    "valid": [
+      "2026-09-08 07:00:00+00:00",
+      "2026-11-07 07:00:00+00:00"
+    ],
+    "test": [
+      "2026-11-07 07:00:00+00:00",
+      "2026-11-21 08:00:00+00:00"
+    ]
+  },
+  "windows": {
+    "train": 10939,
+    "valid": 650,
+    "test": 293
+  },
+  "zero_shot_test": {
+    "overall": {
+      "1_12": {
+        "model_mae": 4.761,
+        "model_rmse": 6.539,
+        "persistence_mae": 6.017,
+        "daily_persistence_mae": 7.902,
+        "skill_vs_persistence": 0.2086,
+        "n": 3446
+      },
+      "13_24": {
+        "model_mae": 6.584,
+        "model_rmse": 8.519,
+        "persistence_mae": 8.652,
+        "daily_persistence_mae": 8.089,
+        "skill_vs_persistence": 0.2391,
+        "n": 3446
+      },
+      "1_24": {
+        "model_mae": 5.673,
+        "model_rmse": 7.594,
+        "persistence_mae": 7.334,
+        "daily_persistence_mae": 7.996,
+        "skill_vs_persistence": 0.2266,
+        "n": 6892
+      }
+    },
+    "by_pollutant": {
+      "pm10": {
+        "1_12": {
+          "model_mae": 5.164,
+          "model_rmse": 7.064,
+          "persistence_mae": 5.778,
+          "daily_persistence_mae": 8.828,
+          "skill_vs_persistence": 0.1063,
+          "n": 1246
+        },
+        "13_24": {
+          "model_mae": 7.364,
+          "model_rmse": 9.409,
+          "persistence_mae": 8.715,
+          "daily_persistence_mae": 9.152,
+          "skill_vs_persistence": 0.155,
+          "n": 1246
+        },
+        "1_24": {
+          "model_mae": 6.264,
+          "model_rmse": 8.319,
+          "persistence_mae": 7.246,
+          "daily_persistence_mae": 8.99,
+          "skill_vs_persistence": 0.1356,
+          "n": 2492
+        }
+      },
+      "pm25": {
+        "1_12": {
+          "model_mae": 4.534,
+          "model_rmse": 6.223,
+          "persistence_mae": 6.152,
+          "daily_persistence_mae": 7.377,
+          "skill_vs_persistence": 0.263,
+          "n": 2200
+        },
+        "13_24": {
+          "model_mae": 6.142,
+          "model_rmse": 7.971,
+          "persistence_mae": 8.617,
+          "daily_persistence_mae": 7.488,
+          "skill_vs_persistence": 0.2872,
+          "n": 2200
+        },
+        "1_24": {
+          "model_mae": 5.338,
+          "model_rmse": 7.151,
+          "persistence_mae": 7.384,
+          "daily_persistence_mae": 7.433,
+          "skill_vs_persistence": 0.2771,
+          "n": 4400
+        }
+      }
+    },
+    "per_series": [
+      {
+        "station_id": "E403",
+        "pollutant": "pm10",
+        "lead_group": "1_12",
+        "model_mae": 5.085,
+        "persistence_mae": 5.156,
+        "skill_vs_persistence": 0.0139,
+        "n": 316
+      },
+      {
+        "station_id": "E403",
+        "pollutant": "pm10",
+        "lead_group": "1_24",
+        "model_mae": 6.471,
+        "persistence_mae": 6.807,
+        "skill_vs_persistence": 0.0493,
+        "n": 632
+      },
+      {
+        "station_id": "E403",
+        "pollutant": "pm25",
+        "lead_group": "1_12",
+        "model_mae": 4.415,
+        "persistence_mae": 4.212,
+        "skill_vs_persistence": -0.0482,
+        "n": 316
+      },
+      {
+        "station_id": "E403",
+        "pollutant": "pm25",
+        "lead_group": "1_24",
+        "model_mae": 5.704,
+        "persistence_mae": 5.705,
+        "skill_vs_persistence": 0.0002,
+        "n": 632
+      },
+      {
+        "station_id": "E404",
+        "pollutant": "pm10",
+        "lead_group": "1_12",
+        "model_mae": 5.736,
+        "persistence_mae": 5.976,
+        "skill_vs_persistence": 0.0403,
+        "n": 306
+      },
+      {
+        "station_id": "E404",
+        "pollutant": "pm10",
+        "lead_group": "1_24",
+        "model_mae": 7.006,
+        "persistence_mae": 7.539,
+        "skill_vs_persistence": 0.0707,
+        "n": 612
+      },
+      {
+        "station_id": "E404",
+        "pollutant": "pm25",
+        "lead_group": "1_12",
+        "model_mae": 5.235,
+        "persistence_mae": 5.503,
+        "skill_vs_persistence": 0.0487,
+        "n": 306
+      },
+      {
+        "station_id": "E404",
+        "pollutant": "pm25",
+        "lead_group": "1_24",
+        "model_mae": 6.455,
+        "persistence_mae": 6.744,
+        "skill_vs_persistence": 0.0429,
+        "n": 612
+      },
+      {
+        "station_id": "E405",
+        "pollutant": "pm10",
+        "lead_group": "1_12",
+        "model_mae": 4.917,
+        "persistence_mae": 4.782,
+        "skill_vs_persistence": -0.0283,
+        "n": 306
+      },
+      {
+        "station_id": "E405",
+        "pollutant": "pm10",
+        "lead_group": "1_24",
+        "model_mae": 6.044,
+        "persistence_mae": 6.279,
+        "skill_vs_persistence": 0.0375,
+        "n": 612
+      },
+      {
+        "station_id": "E405",
+        "pollutant": "pm25",
+        "lead_group": "1_12",
+        "model_mae": 4.261,
+        "persistence_mae": 4.307,
+        "skill_vs_persistence": 0.0107,
+        "n": 306
+      },
+      {
+        "station_id": "E405",
+        "pollutant": "pm25",
+        "lead_group": "1_24",
+        "model_mae": 5.271,
+        "persistence_mae": 5.542,
+        "skill_vs_persistence": 0.0489,
+        "n": 612
+      },
+      {
+        "station_id": "E413",
+        "pollutant": "pm10",
+        "lead_group": "1_12",
+        "model_mae": 4.929,
+        "persistence_mae": 7.162,
+        "skill_vs_persistence": 0.3118,
+        "n": 318
+      },
+      {
+        "station_id": "E413",
+        "pollutant": "pm10",
+        "lead_group": "1_24",
+        "model_mae": 5.555,
+        "persistence_mae": 8.332,
+        "skill_vs_persistence": 0.3333,
+        "n": 636
+      },
+      {
+        "station_id": "E413",
+        "pollutant": "pm25",
+        "lead_group": "1_12",
+        "model_mae": 4.485,
+        "persistence_mae": 6.339,
+        "skill_vs_persistence": 0.2924,
+        "n": 318
+      },
+      {
+        "station_id": "E413",
+        "pollutant": "pm25",
+        "lead_group": "1_24",
+        "model_mae": 5.04,
+        "persistence_mae": 7.438,
+        "skill_vs_persistence": 0.3224,
+        "n": 636
+      },
+      {
+        "station_id": "E414",
+        "pollutant": "pm25",
+        "lead_group": "1_12",
+        "model_mae": 3.5,
+        "persistence_mae": 4.194,
+        "skill_vs_persistence": 0.1653,
+        "n": 318
+      },
+      {
+        "station_id": "E414",
+        "pollutant": "pm25",
+        "lead_group": "1_24",
+        "model_mae": 3.994,
+        "persistence_mae": 5.48,
+        "skill_vs_persistence": 0.2712,
+        "n": 636
+      },
+      {
+        "station_id": "E415",
+        "pollutant": "pm25",
+        "lead_group": "1_12",
+        "model_mae": 5.199,
+        "persistence_mae": 9.891,
+        "skill_vs_persistence": 0.4744,
+        "n": 318
+      },
+      {
+        "station_id": "E415",
+        "pollutant": "pm25",
+        "lead_group": "1_24",
+        "model_mae": 5.703,
+        "persistence_mae": 11.08,
+        "skill_vs_persistence": 0.4853,
+        "n": 636
+      },
+      {
+        "station_id": "E417",
+        "pollutant": "pm25",
+        "lead_group": "1_12",
+        "model_mae": 4.655,
+        "persistence_mae": 8.511,
+        "skill_vs_persistence": 0.453,
+        "n": 318
+      },
+      {
+        "station_id": "E417",
+        "pollutant": "pm25",
+        "lead_group": "1_24",
+        "model_mae": 5.241,
+        "persistence_mae": 9.597,
+        "skill_vs_persistence": 0.4539,
+        "n": 636
+      }
+    ]
+  },
+  "valid": {
+    "overall": {
+      "1_12": {
+        "model_mae": 3.078,
+        "model_rmse": 5.674,
+        "persistence_mae": 4.113,
+        "daily_persistence_mae": 4.266,
+        "skill_vs_persistence": 0.2517,
+        "n": 7779
+      },
+      "13_24": {
+        "model_mae": 3.782,
+        "model_rmse": 5.461,
+        "persistence_mae": 4.512,
+        "daily_persistence_mae": 4.376,
+        "skill_vs_persistence": 0.1618,
+        "n": 7794
+      },
+      "1_24": {
+        "model_mae": 3.43,
+        "model_rmse": 5.569,
+        "persistence_mae": 4.313,
+        "daily_persistence_mae": 4.321,
+        "skill_vs_persistence": 0.2046,
+        "n": 15573
+      }
+    },
+    "by_pollutant": {
+      "pm10": {
+        "1_12": {
+          "model_mae": 4.135,
+          "model_rmse": 7.92,
+          "persistence_mae": 5.311,
+          "daily_persistence_mae": 5.725,
+          "skill_vs_persistence": 0.2215,
+          "n": 2839
+        },
+        "13_24": {
+          "model_mae": 4.661,
+          "model_rmse": 6.428,
+          "persistence_mae": 5.507,
+          "daily_persistence_mae": 5.373,
+          "skill_vs_persistence": 0.1537,
+          "n": 2844
+        },
+        "1_24": {
+          "model_mae": 4.398,
+          "model_rmse": 7.212,
+          "persistence_mae": 5.409,
+          "daily_persistence_mae": 5.549,
+          "skill_vs_persistence": 0.187,
+          "n": 5683
+        }
+      },
+      "pm25": {
+        "1_12": {
+          "model_mae": 2.47,
+          "model_rmse": 3.826,
+          "persistence_mae": 3.424,
+          "daily_persistence_mae": 3.428,
+          "skill_vs_persistence": 0.2785,
+          "n": 4940
+        },
+        "13_24": {
+          "model_mae": 3.278,
+          "model_rmse": 4.819,
+          "persistence_mae": 3.941,
+          "daily_persistence_mae": 3.804,
+          "skill_vs_persistence": 0.1683,
+          "n": 4950
+        },
+        "1_24": {
+          "model_mae": 2.875,
+          "model_rmse": 4.352,
+          "persistence_mae": 3.683,
+          "daily_persistence_mae": 3.616,
+          "skill_vs_persistence": 0.2195,
+          "n": 9890
+        }
+      }
+    },
+    "per_series": [
+      {
+        "station_id": "E403",
+        "pollutant": "pm10",
+        "lead_group": "1_12",
+        "model_mae": 5.038,
+        "persistence_mae": 5.676,
+        "skill_vs_persistence": 0.1124,
+        "n": 717
+      },
+      {
+        "station_id": "E403",
+        "pollutant": "pm10",
+        "lead_group": "1_24",
+        "model_mae": 4.92,
+        "persistence_mae": 5.512,
+        "skill_vs_persistence": 0.1075,
+        "n": 1437
+      },
+      {
+        "station_id": "E403",
+        "pollutant": "pm25",
+        "lead_group": "1_12",
+        "model_mae": 2.201,
+        "persistence_mae": 2.915,
+        "skill_vs_persistence": 0.2448,
+        "n": 708
+      },
+      {
+        "station_id": "E403",
+        "pollutant": "pm25",
+        "lead_group": "1_24",
+        "model_mae": 2.875,
+        "persistence_mae": 3.428,
+        "skill_vs_persistence": 0.1613,
+        "n": 1413
+      },
+      {
+        "station_id": "E404",
+        "pollutant": "pm10",
+        "lead_group": "1_12",
+        "model_mae": 4.788,
+        "persistence_mae": 6.673,
+        "skill_vs_persistence": 0.2824,
+        "n": 708
+      },
+      {
+        "station_id": "E404",
+        "pollutant": "pm10",
+        "lead_group": "1_24",
+        "model_mae": 4.891,
+        "persistence_mae": 6.035,
+        "skill_vs_persistence": 0.1896,
+        "n": 1416
+      },
+      {
+        "station_id": "E404",
+        "pollutant": "pm25",
+        "lead_group": "1_12",
+        "model_mae": 2.857,
+        "persistence_mae": 4.707,
+        "skill_vs_persistence": 0.3931,
+        "n": 708
+      },
+      {
+        "station_id": "E404",
+        "pollutant": "pm25",
+        "lead_group": "1_24",
+        "model_mae": 2.989,
+        "persistence_mae": 4.208,
+        "skill_vs_persistence": 0.2898,
+        "n": 1416
+      },
+      {
+        "station_id": "E405",
+        "pollutant": "pm10",
+        "lead_group": "1_12",
+        "model_mae": 3.664,
+        "persistence_mae": 4.801,
+        "skill_vs_persistence": 0.2368,
+        "n": 708
+      },
+      {
+        "station_id": "E405",
+        "pollutant": "pm10",
+        "lead_group": "1_24",
+        "model_mae": 4.399,
+        "persistence_mae": 5.442,
+        "skill_vs_persistence": 0.1917,
+        "n": 1416
+      },
+      {
+        "station_id": "E405",
+        "pollutant": "pm25",
+        "lead_group": "1_12",
+        "model_mae": 2.428,
+        "persistence_mae": 3.251,
+        "skill_vs_persistence": 0.2533,
+        "n": 708
+      },
+      {
+        "station_id": "E405",
+        "pollutant": "pm25",
+        "lead_group": "1_24",
+        "model_mae": 2.742,
+        "persistence_mae": 3.538,
+        "skill_vs_persistence": 0.2249,
+        "n": 1416
+      },
+      {
+        "station_id": "E413",
+        "pollutant": "pm10",
+        "lead_group": "1_12",
+        "model_mae": 3.032,
+        "persistence_mae": 4.085,
+        "skill_vs_persistence": 0.2578,
+        "n": 706
+      },
+      {
+        "station_id": "E413",
+        "pollutant": "pm10",
+        "lead_group": "1_24",
+        "model_mae": 3.373,
+        "persistence_mae": 4.644,
+        "skill_vs_persistence": 0.2737,
+        "n": 1414
+      },
+      {
+        "station_id": "E413",
+        "pollutant": "pm25",
+        "lead_group": "1_12",
+        "model_mae": 2.015,
+        "persistence_mae": 2.748,
+        "skill_vs_persistence": 0.2666,
+        "n": 706
+      },
+      {
+        "station_id": "E413",
+        "pollutant": "pm25",
+        "lead_group": "1_24",
+        "model_mae": 2.471,
+        "persistence_mae": 3.23,
+        "skill_vs_persistence": 0.2351,
+        "n": 1414
+      },
+      {
+        "station_id": "E414",
+        "pollutant": "pm25",
+        "lead_group": "1_12",
+        "model_mae": 2.395,
+        "persistence_mae": 3.617,
+        "skill_vs_persistence": 0.3378,
+        "n": 700
+      },
+      {
+        "station_id": "E414",
+        "pollutant": "pm25",
+        "lead_group": "1_24",
+        "model_mae": 2.811,
+        "persistence_mae": 3.786,
+        "skill_vs_persistence": 0.2576,
+        "n": 1405
+      },
+      {
+        "station_id": "E415",
+        "pollutant": "pm25",
+        "lead_group": "1_12",
+        "model_mae": 2.371,
+        "persistence_mae": 3.357,
+        "skill_vs_persistence": 0.2938,
+        "n": 705
+      },
+      {
+        "station_id": "E415",
+        "pollutant": "pm25",
+        "lead_group": "1_24",
+        "model_mae": 2.753,
+        "persistence_mae": 3.732,
+        "skill_vs_persistence": 0.2625,
+        "n": 1413
+      },
+      {
+        "station_id": "E417",
+        "pollutant": "pm25",
+        "lead_group": "1_12",
+        "model_mae": 3.025,
+        "persistence_mae": 3.373,
+        "skill_vs_persistence": 0.1032,
+        "n": 705
+      },
+      {
+        "station_id": "E417",
+        "pollutant": "pm25",
+        "lead_group": "1_24",
+        "model_mae": 3.482,
+        "persistence_mae": 3.858,
+        "skill_vs_persistence": 0.0975,
+        "n": 1413
+      }
+    ]
+  },
+  "test": {
+    "overall": {
+      "1_12": {
+        "model_mae": 4.7,
+        "model_rmse": 6.547,
+        "persistence_mae": 6.017,
+        "daily_persistence_mae": 7.902,
+        "skill_vs_persistence": 0.2189,
+        "n": 3446
+      },
+      "13_24": {
+        "model_mae": 6.549,
+        "model_rmse": 8.619,
+        "persistence_mae": 8.652,
+        "daily_persistence_mae": 8.089,
+        "skill_vs_persistence": 0.2431,
+        "n": 3446
+      },
+      "1_24": {
+        "model_mae": 5.624,
+        "model_rmse": 7.654,
+        "persistence_mae": 7.334,
+        "daily_persistence_mae": 7.996,
+        "skill_vs_persistence": 0.2332,
+        "n": 6892
+      }
+    },
+    "by_pollutant": {
+      "pm10": {
+        "1_12": {
+          "model_mae": 5.133,
+          "model_rmse": 7.026,
+          "persistence_mae": 5.778,
+          "daily_persistence_mae": 8.828,
+          "skill_vs_persistence": 0.1116,
+          "n": 1246
+        },
+        "13_24": {
+          "model_mae": 7.338,
+          "model_rmse": 9.513,
+          "persistence_mae": 8.715,
+          "daily_persistence_mae": 9.152,
+          "skill_vs_persistence": 0.158,
+          "n": 1246
+        },
+        "1_24": {
+          "model_mae": 6.235,
+          "model_rmse": 8.362,
+          "persistence_mae": 7.246,
+          "daily_persistence_mae": 8.99,
+          "skill_vs_persistence": 0.1395,
+          "n": 2492
+        }
+      },
+      "pm25": {
+        "1_12": {
+          "model_mae": 4.454,
+          "model_rmse": 6.26,
+          "persistence_mae": 6.152,
+          "daily_persistence_mae": 7.377,
+          "skill_vs_persistence": 0.2759,
+          "n": 2200
+        },
+        "13_24": {
+          "model_mae": 6.101,
+          "model_rmse": 8.069,
+          "persistence_mae": 8.617,
+          "daily_persistence_mae": 7.488,
+          "skill_vs_persistence": 0.2919,
+          "n": 2200
+        },
+        "1_24": {
+          "model_mae": 5.278,
+          "model_rmse": 7.221,
+          "persistence_mae": 7.384,
+          "daily_persistence_mae": 7.433,
+          "skill_vs_persistence": 0.2853,
+          "n": 4400
+        }
+      }
+    },
+    "per_series": [
+      {
+        "station_id": "E403",
+        "pollutant": "pm10",
+        "lead_group": "1_12",
+        "model_mae": 4.858,
+        "persistence_mae": 5.156,
+        "skill_vs_persistence": 0.0578,
+        "n": 316
+      },
+      {
+        "station_id": "E403",
+        "pollutant": "pm10",
+        "lead_group": "1_24",
+        "model_mae": 6.251,
+        "persistence_mae": 6.807,
+        "skill_vs_persistence": 0.0817,
+        "n": 632
+      },
+      {
+        "station_id": "E403",
+        "pollutant": "pm25",
+        "lead_group": "1_12",
+        "model_mae": 4.128,
+        "persistence_mae": 4.212,
+        "skill_vs_persistence": 0.02,
+        "n": 316
+      },
+      {
+        "station_id": "E403",
+        "pollutant": "pm25",
+        "lead_group": "1_24",
+        "model_mae": 5.403,
+        "persistence_mae": 5.705,
+        "skill_vs_persistence": 0.0529,
+        "n": 632
+      },
+      {
+        "station_id": "E404",
+        "pollutant": "pm10",
+        "lead_group": "1_12",
+        "model_mae": 5.707,
+        "persistence_mae": 5.976,
+        "skill_vs_persistence": 0.045,
+        "n": 306
+      },
+      {
+        "station_id": "E404",
+        "pollutant": "pm10",
+        "lead_group": "1_24",
+        "model_mae": 6.967,
+        "persistence_mae": 7.539,
+        "skill_vs_persistence": 0.0759,
+        "n": 612
+      },
+      {
+        "station_id": "E404",
+        "pollutant": "pm25",
+        "lead_group": "1_12",
+        "model_mae": 5.167,
+        "persistence_mae": 5.503,
+        "skill_vs_persistence": 0.0611,
+        "n": 306
+      },
+      {
+        "station_id": "E404",
+        "pollutant": "pm25",
+        "lead_group": "1_24",
+        "model_mae": 6.334,
+        "persistence_mae": 6.744,
+        "skill_vs_persistence": 0.0608,
+        "n": 612
+      },
+      {
+        "station_id": "E405",
+        "pollutant": "pm10",
+        "lead_group": "1_12",
+        "model_mae": 4.905,
+        "persistence_mae": 4.782,
+        "skill_vs_persistence": -0.0256,
+        "n": 306
+      },
+      {
+        "station_id": "E405",
+        "pollutant": "pm10",
+        "lead_group": "1_24",
+        "model_mae": 5.965,
+        "persistence_mae": 6.279,
+        "skill_vs_persistence": 0.05,
+        "n": 612
+      },
+      {
+        "station_id": "E405",
+        "pollutant": "pm25",
+        "lead_group": "1_12",
+        "model_mae": 4.074,
+        "persistence_mae": 4.307,
+        "skill_vs_persistence": 0.0541,
+        "n": 306
+      },
+      {
+        "station_id": "E405",
+        "pollutant": "pm25",
+        "lead_group": "1_24",
+        "model_mae": 5.075,
+        "persistence_mae": 5.542,
+        "skill_vs_persistence": 0.0843,
+        "n": 612
+      },
+      {
+        "station_id": "E413",
+        "pollutant": "pm10",
+        "lead_group": "1_12",
+        "model_mae": 5.072,
+        "persistence_mae": 7.162,
+        "skill_vs_persistence": 0.2918,
+        "n": 318
+      },
+      {
+        "station_id": "E413",
+        "pollutant": "pm10",
+        "lead_group": "1_24",
+        "model_mae": 5.776,
+        "persistence_mae": 8.332,
+        "skill_vs_persistence": 0.3068,
+        "n": 636
+      },
+      {
+        "station_id": "E413",
+        "pollutant": "pm25",
+        "lead_group": "1_12",
+        "model_mae": 4.599,
+        "persistence_mae": 6.339,
+        "skill_vs_persistence": 0.2744,
+        "n": 318
+      },
+      {
+        "station_id": "E413",
+        "pollutant": "pm25",
+        "lead_group": "1_24",
+        "model_mae": 5.24,
+        "persistence_mae": 7.438,
+        "skill_vs_persistence": 0.2955,
+        "n": 636
+      },
+      {
+        "station_id": "E414",
+        "pollutant": "pm25",
+        "lead_group": "1_12",
+        "model_mae": 3.327,
+        "persistence_mae": 4.194,
+        "skill_vs_persistence": 0.2067,
+        "n": 318
+      },
+      {
+        "station_id": "E414",
+        "pollutant": "pm25",
+        "lead_group": "1_24",
+        "model_mae": 3.912,
+        "persistence_mae": 5.48,
+        "skill_vs_persistence": 0.2861,
+        "n": 636
+      },
+      {
+        "station_id": "E415",
+        "pollutant": "pm25",
+        "lead_group": "1_12",
+        "model_mae": 5.39,
+        "persistence_mae": 9.891,
+        "skill_vs_persistence": 0.455,
+        "n": 318
+      },
+      {
+        "station_id": "E415",
+        "pollutant": "pm25",
+        "lead_group": "1_24",
+        "model_mae": 5.895,
+        "persistence_mae": 11.08,
+        "skill_vs_persistence": 0.468,
+        "n": 636
+      },
+      {
+        "station_id": "E417",
+        "pollutant": "pm25",
+        "lead_group": "1_12",
+        "model_mae": 4.507,
+        "persistence_mae": 8.511,
+        "skill_vs_persistence": 0.4705,
+        "n": 318
+      },
+      {
+        "station_id": "E417",
+        "pollutant": "pm25",
+        "lead_group": "1_24",
+        "model_mae": 5.121,
+        "persistence_mae": 9.597,
+        "skill_vs_persistence": 0.4665,
+        "n": 636
+      }
+    ],
+    "high_pollution_days": {
+      "1_12": {
+        "model_mae": 6.336,
+        "model_rmse": 8.506,
+        "n": 271,
+        "persistence_mae": 6.275,
+        "skill_vs_persistence": -0.0099
+      },
+      "13_24": {
+        "model_mae": 10.243,
+        "model_rmse": 12.031,
+        "n": 254,
+        "persistence_mae": 9.818,
+        "skill_vs_persistence": -0.0433
+      },
+      "1_24": {
+        "model_mae": 8.227,
+        "model_rmse": 10.362,
+        "n": 525,
+        "persistence_mae": 7.989,
+        "skill_vs_persistence": -0.0298
+      }
+    },
+    "spatial_idw": {
+      "1_12": {
+        "model_mae": 4.993,
+        "model_rmse": 7.182,
+        "n": 1272
+      },
+      "13_24": {
+        "model_mae": 5.643,
+        "model_rmse": 7.636,
+        "n": 1272
+      },
+      "1_24": {
+        "model_mae": 5.318,
+        "model_rmse": 7.412,
+        "n": 2544
+      }
+    }
+  }
+}
