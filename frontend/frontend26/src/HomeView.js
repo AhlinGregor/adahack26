@@ -787,7 +787,7 @@ export default function HomeView() {
               marginBottom: '8px',
             }}
           >
-            NO2 (µg/m³)
+            NO2
           </label>
           <input
             type="text"
@@ -993,7 +993,7 @@ export default function HomeView() {
           />
 
           {paintedPoints.length > 0 && (
-            <StationPollutionLayer points={paintedPoints} maxRadiusKm={35} power={2} />
+            <StationPollutionLayer points={paintedPoints} maxRadiusKm={1.5} power={2} />
           )}
 
           {location && (
