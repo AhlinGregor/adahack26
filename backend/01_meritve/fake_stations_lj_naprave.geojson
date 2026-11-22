@@ -7,17 +7,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.441,
-     46.0594
+     14.5672,
+     46.0373
     ]
    },
    "properties": {
     "station_id": "FAKE001",
     "name": "Fake Suburban 001",
     "station_type": "suburban",
-    "spatial_factor": 1.4,
-    "lat": 46.0594,
-    "lon": 14.441
+    "spatial_factor": 1.16,
+    "lat": 46.0373,
+    "lon": 14.5672
    }
   },
   {
@@ -25,17 +25,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.5135,
-     46.0235
+     14.4822,
+     46.0266
     ]
    },
    "properties": {
     "station_id": "FAKE002",
-    "name": "Fake Suburban 002",
-    "station_type": "suburban",
-    "spatial_factor": 2.67,
-    "lat": 46.0235,
-    "lon": 14.5135
+    "name": "Fake Traffic 002",
+    "station_type": "traffic",
+    "spatial_factor": 1.32,
+    "lat": 46.0266,
+    "lon": 14.4822
    }
   },
   {
@@ -43,17 +43,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.5201,
-     45.9859
+     14.4392,
+     46.0488
     ]
    },
    "properties": {
     "station_id": "FAKE003",
     "name": "Fake Suburban 003",
     "station_type": "suburban",
-    "spatial_factor": 0.86,
-    "lat": 45.9859,
-    "lon": 14.5201
+    "spatial_factor": 1.42,
+    "lat": 46.0488,
+    "lon": 14.4392
    }
   },
   {
@@ -61,17 +61,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.5114,
-     46.0205
+     14.606,
+     46.0421
     ]
    },
    "properties": {
     "station_id": "FAKE004",
     "name": "Fake Heating 004",
     "station_type": "heating",
-    "spatial_factor": 1.72,
-    "lat": 46.0205,
-    "lon": 14.5114
+    "spatial_factor": 1.38,
+    "lat": 46.0421,
+    "lon": 14.606
    }
   },
   {
@@ -79,17 +79,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.539,
-     46.0819
+     14.5649,
+     46.1306
     ]
    },
    "properties": {
     "station_id": "FAKE005",
-    "name": "Fake Background 005",
-    "station_type": "background",
-    "spatial_factor": 1.29,
-    "lat": 46.0819,
-    "lon": 14.539
+    "name": "Fake Traffic 005",
+    "station_type": "traffic",
+    "spatial_factor": 0.92,
+    "lat": 46.1306,
+    "lon": 14.5649
    }
   },
   {
@@ -97,17 +97,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.5398,
-     46.0814
+     14.5168,
+     46.0733
     ]
    },
    "properties": {
     "station_id": "FAKE006",
-    "name": "Fake Traffic 006",
-    "station_type": "traffic",
-    "spatial_factor": 1.82,
-    "lat": 46.0814,
-    "lon": 14.5398
+    "name": "Fake Heating 006",
+    "station_type": "heating",
+    "spatial_factor": 1.13,
+    "lat": 46.0733,
+    "lon": 14.5168
    }
   },
   {
@@ -115,35 +115,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.5824,
-     46.1115
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE007",
-    "name": "Fake Background 007",
-    "station_type": "background",
-    "spatial_factor": 1.31,
-    "lat": 46.1115,
-    "lon": 14.5824
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.5978,
+     14.4794,
      46.15
     ]
    },
    "properties": {
-    "station_id": "FAKE008",
-    "name": "Fake Background 008",
-    "station_type": "background",
-    "spatial_factor": 0.59,
+    "station_id": "FAKE007",
+    "name": "Fake Heating 007",
+    "station_type": "heating",
+    "spatial_factor": 0.51,
     "lat": 46.15,
-    "lon": 14.5978
+    "lon": 14.4794
    }
   },
   {
@@ -151,17 +133,35 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.5298,
-     46.0802
+     14.5303,
+     46.0548
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE008",
+    "name": "Fake Traffic 008",
+    "station_type": "traffic",
+    "spatial_factor": 1.25,
+    "lat": 46.0548,
+    "lon": 14.5303
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.495,
+     45.986
     ]
    },
    "properties": {
     "station_id": "FAKE009",
     "name": "Fake Heating 009",
     "station_type": "heating",
-    "spatial_factor": 1.45,
-    "lat": 46.0802,
-    "lon": 14.5298
+    "spatial_factor": 1.36,
+    "lat": 45.986,
+    "lon": 14.495
    }
   },
   {
@@ -169,17 +169,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.5694,
-     46.0487
+     14.551,
+     46.0305
     ]
    },
    "properties": {
     "station_id": "FAKE010",
-    "name": "Fake Background 010",
-    "station_type": "background",
-    "spatial_factor": 1.43,
-    "lat": 46.0487,
-    "lon": 14.5694
+    "name": "Fake Traffic 010",
+    "station_type": "traffic",
+    "spatial_factor": 1.76,
+    "lat": 46.0305,
+    "lon": 14.551
    }
   },
   {
@@ -187,17 +187,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.5817,
-     46.0618
+     14.5503,
+     46.0489
     ]
    },
    "properties": {
     "station_id": "FAKE011",
-    "name": "Fake Heating 011",
-    "station_type": "heating",
-    "spatial_factor": 1.8,
-    "lat": 46.0618,
-    "lon": 14.5817
+    "name": "Fake Traffic 011",
+    "station_type": "traffic",
+    "spatial_factor": 0.95,
+    "lat": 46.0489,
+    "lon": 14.5503
    }
   },
   {
@@ -205,17 +205,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.5053,
-     46.0812
+     14.5558,
+     46.0685
     ]
    },
    "properties": {
     "station_id": "FAKE012",
     "name": "Fake Heating 012",
     "station_type": "heating",
-    "spatial_factor": 1.2,
-    "lat": 46.0812,
-    "lon": 14.5053
+    "spatial_factor": 1.27,
+    "lat": 46.0685,
+    "lon": 14.5558
    }
   },
   {
@@ -223,17 +223,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.649,
-     46.1104
+     14.4861,
+     46.0024
     ]
    },
    "properties": {
     "station_id": "FAKE013",
-    "name": "Fake Traffic 013",
-    "station_type": "traffic",
-    "spatial_factor": 0.73,
-    "lat": 46.1104,
-    "lon": 14.649
+    "name": "Fake Background 013",
+    "station_type": "background",
+    "spatial_factor": 1.11,
+    "lat": 46.0024,
+    "lon": 14.4861
    }
   },
   {
@@ -241,17 +241,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.5335,
-     46.0873
+     14.5498,
+     46.076
     ]
    },
    "properties": {
     "station_id": "FAKE014",
-    "name": "Fake Heating 014",
-    "station_type": "heating",
-    "spatial_factor": 1.58,
-    "lat": 46.0873,
-    "lon": 14.5335
+    "name": "Fake Background 014",
+    "station_type": "background",
+    "spatial_factor": 1.27,
+    "lat": 46.076,
+    "lon": 14.5498
    }
   },
   {
@@ -259,17 +259,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.4927,
-     46.093
+     14.5534,
+     46.0707
     ]
    },
    "properties": {
     "station_id": "FAKE015",
-    "name": "Fake Background 015",
-    "station_type": "background",
-    "spatial_factor": 2.86,
-    "lat": 46.093,
-    "lon": 14.4927
+    "name": "Fake Traffic 015",
+    "station_type": "traffic",
+    "spatial_factor": 1.76,
+    "lat": 46.0707,
+    "lon": 14.5534
    }
   },
   {
@@ -277,17 +277,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.4892,
-     46.0287
+     14.38,
+     46.0453
     ]
    },
    "properties": {
     "station_id": "FAKE016",
     "name": "Fake Heating 016",
     "station_type": "heating",
-    "spatial_factor": 1.69,
-    "lat": 46.0287,
-    "lon": 14.4892
+    "spatial_factor": 0.52,
+    "lat": 46.0453,
+    "lon": 14.38
    }
   },
   {
@@ -295,17 +295,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.3924,
-     46.017
+     14.5597,
+     46.1067
     ]
    },
    "properties": {
     "station_id": "FAKE017",
-    "name": "Fake Traffic 017",
-    "station_type": "traffic",
-    "spatial_factor": 0.79,
-    "lat": 46.017,
-    "lon": 14.3924
+    "name": "Fake Heating 017",
+    "station_type": "heating",
+    "spatial_factor": 1.36,
+    "lat": 46.1067,
+    "lon": 14.5597
    }
   },
   {
@@ -313,17 +313,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.4584,
-     46.0605
+     14.4553,
+     46.0492
     ]
    },
    "properties": {
     "station_id": "FAKE018",
-    "name": "Fake Heating 018",
-    "station_type": "heating",
-    "spatial_factor": 1.58,
-    "lat": 46.0605,
-    "lon": 14.4584
+    "name": "Fake Traffic 018",
+    "station_type": "traffic",
+    "spatial_factor": 1.86,
+    "lat": 46.0492,
+    "lon": 14.4553
    }
   },
   {
@@ -331,17 +331,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.497,
-     46.0216
+     14.5255,
+     46.0905
     ]
    },
    "properties": {
     "station_id": "FAKE019",
-    "name": "Fake Suburban 019",
-    "station_type": "suburban",
-    "spatial_factor": 1.71,
-    "lat": 46.0216,
-    "lon": 14.497
+    "name": "Fake Background 019",
+    "station_type": "background",
+    "spatial_factor": 2.35,
+    "lat": 46.0905,
+    "lon": 14.5255
    }
   },
   {
@@ -349,17 +349,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.4399,
-     46.0011
+     14.4093,
+     46.0583
     ]
    },
    "properties": {
     "station_id": "FAKE020",
-    "name": "Fake Heating 020",
-    "station_type": "heating",
-    "spatial_factor": 0.8,
-    "lat": 46.0011,
-    "lon": 14.4399
+    "name": "Fake Background 020",
+    "station_type": "background",
+    "spatial_factor": 0.9,
+    "lat": 46.0583,
+    "lon": 14.4093
    }
   },
   {
@@ -367,17 +367,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.4989,
-     46.0418
+     14.3888,
+     46.009
     ]
    },
    "properties": {
     "station_id": "FAKE021",
-    "name": "Fake Traffic 021",
-    "station_type": "traffic",
-    "spatial_factor": 2.99,
-    "lat": 46.0418,
-    "lon": 14.4989
+    "name": "Fake Suburban 021",
+    "station_type": "suburban",
+    "spatial_factor": 0.95,
+    "lat": 46.009,
+    "lon": 14.3888
    }
   },
   {
@@ -385,17 +385,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.4101,
-     46.0623
+     14.5166,
+     46.0729
     ]
    },
    "properties": {
     "station_id": "FAKE022",
     "name": "Fake Heating 022",
     "station_type": "heating",
-    "spatial_factor": 1.47,
-    "lat": 46.0623,
-    "lon": 14.4101
+    "spatial_factor": 1.33,
+    "lat": 46.0729,
+    "lon": 14.5166
    }
   },
   {
@@ -403,17 +403,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.4695,
-     46.0651
+     14.4728,
+     46.0753
     ]
    },
    "properties": {
     "station_id": "FAKE023",
-    "name": "Fake Traffic 023",
-    "station_type": "traffic",
-    "spatial_factor": 1.43,
-    "lat": 46.0651,
-    "lon": 14.4695
+    "name": "Fake Background 023",
+    "station_type": "background",
+    "spatial_factor": 2.04,
+    "lat": 46.0753,
+    "lon": 14.4728
    }
   },
   {
@@ -421,17 +421,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.462,
-     46.1062
+     14.6253,
+     46.0343
     ]
    },
    "properties": {
     "station_id": "FAKE024",
-    "name": "Fake Traffic 024",
-    "station_type": "traffic",
-    "spatial_factor": 1.26,
-    "lat": 46.1062,
-    "lon": 14.462
+    "name": "Fake Heating 024",
+    "station_type": "heating",
+    "spatial_factor": 0.98,
+    "lat": 46.0343,
+    "lon": 14.6253
    }
   },
   {
@@ -439,17 +439,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.5874,
-     46.0264
+     14.38,
+     46.0756
     ]
    },
    "properties": {
     "station_id": "FAKE025",
     "name": "Fake Traffic 025",
     "station_type": "traffic",
-    "spatial_factor": 1.54,
-    "lat": 46.0264,
-    "lon": 14.5874
+    "spatial_factor": 0.82,
+    "lat": 46.0756,
+    "lon": 14.38
    }
   },
   {
@@ -457,287 +457,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.4961,
-     46.0474
+     14.4077,
+     46.0485
     ]
    },
    "properties": {
     "station_id": "FAKE026",
-    "name": "Fake Traffic 026",
-    "station_type": "traffic",
-    "spatial_factor": 1.32,
-    "lat": 46.0474,
-    "lon": 14.4961
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.4217,
-     45.9995
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE027",
-    "name": "Fake Background 027",
-    "station_type": "background",
-    "spatial_factor": 0.66,
-    "lat": 45.9995,
-    "lon": 14.4217
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.4479,
-     46.15
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE028",
-    "name": "Fake Background 028",
-    "station_type": "background",
-    "spatial_factor": 0.36,
-    "lat": 46.15,
-    "lon": 14.4479
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.4853,
-     46.1335
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE029",
-    "name": "Fake Suburban 029",
-    "station_type": "suburban",
-    "spatial_factor": 0.44,
-    "lat": 46.1335,
-    "lon": 14.4853
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.5253,
-     46.0608
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE030",
-    "name": "Fake Heating 030",
+    "name": "Fake Heating 026",
     "station_type": "heating",
-    "spatial_factor": 1.83,
-    "lat": 46.0608,
-    "lon": 14.5253
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.4352,
-     46.0858
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE031",
-    "name": "Fake Heating 031",
-    "station_type": "heating",
-    "spatial_factor": 1.17,
-    "lat": 46.0858,
-    "lon": 14.4352
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.3901,
-     46.0898
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE032",
-    "name": "Fake Traffic 032",
-    "station_type": "traffic",
     "spatial_factor": 1.15,
-    "lat": 46.0898,
-    "lon": 14.3901
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.5129,
-     46.0959
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE033",
-    "name": "Fake Heating 033",
-    "station_type": "heating",
-    "spatial_factor": 2.42,
-    "lat": 46.0959,
-    "lon": 14.5129
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.527,
-     46.0651
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE034",
-    "name": "Fake Heating 034",
-    "station_type": "heating",
-    "spatial_factor": 1.16,
-    "lat": 46.0651,
-    "lon": 14.527
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.4462,
-     46.0525
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE035",
-    "name": "Fake Traffic 035",
-    "station_type": "traffic",
-    "spatial_factor": 1.93,
-    "lat": 46.0525,
-    "lon": 14.4462
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.4985,
-     46.0051
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE036",
-    "name": "Fake Suburban 036",
-    "station_type": "suburban",
-    "spatial_factor": 0.75,
-    "lat": 46.0051,
-    "lon": 14.4985
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.4954,
-     46.119
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE037",
-    "name": "Fake Heating 037",
-    "station_type": "heating",
-    "spatial_factor": 1.07,
-    "lat": 46.119,
-    "lon": 14.4954
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.5344,
-     46.0186
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE038",
-    "name": "Fake Background 038",
-    "station_type": "background",
-    "spatial_factor": 0.99,
-    "lat": 46.0186,
-    "lon": 14.5344
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.4966,
-     46.15
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE039",
-    "name": "Fake Heating 039",
-    "station_type": "heating",
-    "spatial_factor": 0.47,
-    "lat": 46.15,
-    "lon": 14.4966
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.4831,
-     46.0947
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE040",
-    "name": "Fake Background 040",
-    "station_type": "background",
-    "spatial_factor": 1.7,
-    "lat": 46.0947,
-    "lon": 14.4831
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.6009,
-     46.0321
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE041",
-    "name": "Fake Background 041",
-    "station_type": "background",
-    "spatial_factor": 1.15,
-    "lat": 46.0321,
-    "lon": 14.6009
+    "lat": 46.0485,
+    "lon": 14.4077
    }
   },
   {
@@ -746,15 +476,15 @@
     "type": "Point",
     "coordinates": [
      14.5048,
-     46.0424
+     46.0689
     ]
    },
    "properties": {
-    "station_id": "FAKE042",
-    "name": "Fake Heating 042",
-    "station_type": "heating",
-    "spatial_factor": 0.98,
-    "lat": 46.0424,
+    "station_id": "FAKE027",
+    "name": "Fake Background 027",
+    "station_type": "background",
+    "spatial_factor": 1.14,
+    "lat": 46.0689,
     "lon": 14.5048
    }
   },
@@ -763,17 +493,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.4997,
-     46.15
+     14.4816,
+     46.0463
     ]
    },
    "properties": {
-    "station_id": "FAKE043",
-    "name": "Fake Traffic 043",
-    "station_type": "traffic",
-    "spatial_factor": 0.8,
-    "lat": 46.15,
-    "lon": 14.4997
+    "station_id": "FAKE028",
+    "name": "Fake Heating 028",
+    "station_type": "heating",
+    "spatial_factor": 2.25,
+    "lat": 46.0463,
+    "lon": 14.4816
    }
   },
   {
@@ -781,17 +511,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.4026,
-     46.1447
+     14.4844,
+     46.0577
     ]
    },
    "properties": {
-    "station_id": "FAKE044",
-    "name": "Fake Background 044",
-    "station_type": "background",
-    "spatial_factor": 0.95,
-    "lat": 46.1447,
-    "lon": 14.4026
+    "station_id": "FAKE029",
+    "name": "Fake Heating 029",
+    "station_type": "heating",
+    "spatial_factor": 1.39,
+    "lat": 46.0577,
+    "lon": 14.4844
    }
   },
   {
@@ -799,17 +529,35 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.4639,
-     46.1059
+     14.5531,
+     46.0572
     ]
    },
    "properties": {
-    "station_id": "FAKE045",
-    "name": "Fake Traffic 045",
+    "station_id": "FAKE030",
+    "name": "Fake Traffic 030",
     "station_type": "traffic",
+    "spatial_factor": 1.07,
+    "lat": 46.0572,
+    "lon": 14.5531
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.6127,
+     46.1402
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE031",
+    "name": "Fake Heating 031",
+    "station_type": "heating",
     "spatial_factor": 0.79,
-    "lat": 46.1059,
-    "lon": 14.4639
+    "lat": 46.1402,
+    "lon": 14.6127
    }
   },
   {
@@ -817,143 +565,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.38,
-     46.0305
+     14.5831,
+     46.0988
     ]
    },
    "properties": {
-    "station_id": "FAKE046",
-    "name": "Fake Background 046",
-    "station_type": "background",
-    "spatial_factor": 1.11,
-    "lat": 46.0305,
-    "lon": 14.38
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.5582,
-     46.0524
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE047",
-    "name": "Fake Suburban 047",
-    "station_type": "suburban",
-    "spatial_factor": 0.87,
-    "lat": 46.0524,
-    "lon": 14.5582
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.5315,
-     46.0351
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE048",
-    "name": "Fake Traffic 048",
-    "station_type": "traffic",
-    "spatial_factor": 2.07,
-    "lat": 46.0351,
-    "lon": 14.5315
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.4052,
-     46.0173
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE049",
-    "name": "Fake Suburban 049",
-    "station_type": "suburban",
-    "spatial_factor": 1.45,
-    "lat": 46.0173,
-    "lon": 14.4052
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.4708,
-     46.1047
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE050",
-    "name": "Fake Traffic 050",
-    "station_type": "traffic",
-    "spatial_factor": 1.15,
-    "lat": 46.1047,
-    "lon": 14.4708
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.4611,
-     46.0532
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE051",
-    "name": "Fake Background 051",
-    "station_type": "background",
-    "spatial_factor": 2.28,
-    "lat": 46.0532,
-    "lon": 14.4611
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.4328,
-     46.0504
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE052",
-    "name": "Fake Suburban 052",
-    "station_type": "suburban",
-    "spatial_factor": 1.35,
-    "lat": 46.0504,
-    "lon": 14.4328
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.38,
-     45.96
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE053",
-    "name": "Fake Heating 053",
+    "station_id": "FAKE032",
+    "name": "Fake Heating 032",
     "station_type": "heating",
-    "spatial_factor": 0.63,
-    "lat": 45.96,
-    "lon": 14.38
+    "spatial_factor": 1.88,
+    "lat": 46.0988,
+    "lon": 14.5831
    }
   },
   {
@@ -961,125 +583,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.5252,
-     46.0416
+     14.6207,
+     46.0921
     ]
    },
    "properties": {
-    "station_id": "FAKE054",
-    "name": "Fake Heating 054",
-    "station_type": "heating",
-    "spatial_factor": 2.15,
-    "lat": 46.0416,
-    "lon": 14.5252
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.4991,
-     46.0421
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE055",
-    "name": "Fake Traffic 055",
-    "station_type": "traffic",
-    "spatial_factor": 1.46,
-    "lat": 46.0421,
-    "lon": 14.4991
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.4662,
-     46.0908
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE056",
-    "name": "Fake Heating 056",
-    "station_type": "heating",
-    "spatial_factor": 1.0,
-    "lat": 46.0908,
-    "lon": 14.4662
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.4857,
-     46.0395
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE057",
-    "name": "Fake Traffic 057",
-    "station_type": "traffic",
-    "spatial_factor": 1.8,
-    "lat": 46.0395,
-    "lon": 14.4857
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.4426,
-     46.045
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE058",
-    "name": "Fake Background 058",
+    "station_id": "FAKE033",
+    "name": "Fake Background 033",
     "station_type": "background",
-    "spatial_factor": 1.6,
-    "lat": 46.045,
-    "lon": 14.4426
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.38,
-     45.9942
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE059",
-    "name": "Fake Traffic 059",
-    "station_type": "traffic",
-    "spatial_factor": 0.79,
-    "lat": 45.9942,
-    "lon": 14.38
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.5369,
-     46.0195
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE060",
-    "name": "Fake Traffic 060",
-    "station_type": "traffic",
-    "spatial_factor": 1.71,
-    "lat": 46.0195,
-    "lon": 14.5369
+    "spatial_factor": 1.04,
+    "lat": 46.0921,
+    "lon": 14.6207
    }
   },
   {
@@ -1088,15 +602,15 @@
     "type": "Point",
     "coordinates": [
      14.5379,
-     46.048
+     46.0303
     ]
    },
    "properties": {
-    "station_id": "FAKE061",
-    "name": "Fake Heating 061",
-    "station_type": "heating",
-    "spatial_factor": 1.23,
-    "lat": 46.048,
+    "station_id": "FAKE034",
+    "name": "Fake Background 034",
+    "station_type": "background",
+    "spatial_factor": 1.72,
+    "lat": 46.0303,
     "lon": 14.5379
    }
   },
@@ -1105,17 +619,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.514,
-     46.06
+     14.4356,
+     46.1141
     ]
    },
    "properties": {
-    "station_id": "FAKE062",
-    "name": "Fake Heating 062",
-    "station_type": "heating",
-    "spatial_factor": 1.52,
-    "lat": 46.06,
-    "lon": 14.514
+    "station_id": "FAKE035",
+    "name": "Fake Traffic 035",
+    "station_type": "traffic",
+    "spatial_factor": 0.83,
+    "lat": 46.1141,
+    "lon": 14.4356
    }
   },
   {
@@ -1123,17 +637,449 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.5114,
-     46.0324
+     14.5187,
+     45.96
     ]
    },
    "properties": {
-    "station_id": "FAKE063",
-    "name": "Fake Traffic 063",
+    "station_id": "FAKE036",
+    "name": "Fake Traffic 036",
     "station_type": "traffic",
-    "spatial_factor": 1.87,
-    "lat": 46.0324,
-    "lon": 14.5114
+    "spatial_factor": 1.43,
+    "lat": 45.96,
+    "lon": 14.5187
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.5101,
+     46.0536
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE037",
+    "name": "Fake Background 037",
+    "station_type": "background",
+    "spatial_factor": 1.71,
+    "lat": 46.0536,
+    "lon": 14.5101
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.5233,
+     46.0513
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE038",
+    "name": "Fake Heating 038",
+    "station_type": "heating",
+    "spatial_factor": 1.1,
+    "lat": 46.0513,
+    "lon": 14.5233
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.5003,
+     46.0279
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE039",
+    "name": "Fake Traffic 039",
+    "station_type": "traffic",
+    "spatial_factor": 2.51,
+    "lat": 46.0279,
+    "lon": 14.5003
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.5699,
+     46.0847
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE040",
+    "name": "Fake Background 040",
+    "station_type": "background",
+    "spatial_factor": 1.63,
+    "lat": 46.0847,
+    "lon": 14.5699
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.5425,
+     46.0664
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE041",
+    "name": "Fake Heating 041",
+    "station_type": "heating",
+    "spatial_factor": 2.56,
+    "lat": 46.0664,
+    "lon": 14.5425
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.4988,
+     46.0347
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE042",
+    "name": "Fake Background 042",
+    "station_type": "background",
+    "spatial_factor": 2.3,
+    "lat": 46.0347,
+    "lon": 14.4988
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.5575,
+     46.068
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE043",
+    "name": "Fake Background 043",
+    "station_type": "background",
+    "spatial_factor": 1.06,
+    "lat": 46.068,
+    "lon": 14.5575
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.4452,
+     46.079
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE044",
+    "name": "Fake Background 044",
+    "station_type": "background",
+    "spatial_factor": 0.94,
+    "lat": 46.079,
+    "lon": 14.4452
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.4098,
+     46.15
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE045",
+    "name": "Fake Traffic 045",
+    "station_type": "traffic",
+    "spatial_factor": 0.76,
+    "lat": 46.15,
+    "lon": 14.4098
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.5305,
+     46.0653
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE046",
+    "name": "Fake Traffic 046",
+    "station_type": "traffic",
+    "spatial_factor": 2.08,
+    "lat": 46.0653,
+    "lon": 14.5305
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.4661,
+     46.119
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE047",
+    "name": "Fake Background 047",
+    "station_type": "background",
+    "spatial_factor": 0.56,
+    "lat": 46.119,
+    "lon": 14.4661
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.5942,
+     46.15
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE048",
+    "name": "Fake Background 048",
+    "station_type": "background",
+    "spatial_factor": 0.88,
+    "lat": 46.15,
+    "lon": 14.5942
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.5613,
+     46.0361
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE049",
+    "name": "Fake Suburban 049",
+    "station_type": "suburban",
+    "spatial_factor": 1.75,
+    "lat": 46.0361,
+    "lon": 14.5613
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.4494,
+     46.0638
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE050",
+    "name": "Fake Background 050",
+    "station_type": "background",
+    "spatial_factor": 1.67,
+    "lat": 46.0638,
+    "lon": 14.4494
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.4503,
+     46.1078
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE051",
+    "name": "Fake Background 051",
+    "station_type": "background",
+    "spatial_factor": 0.78,
+    "lat": 46.1078,
+    "lon": 14.4503
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.466,
+     46.0131
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE052",
+    "name": "Fake Heating 052",
+    "station_type": "heating",
+    "spatial_factor": 1.4,
+    "lat": 46.0131,
+    "lon": 14.466
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.5488,
+     46.1114
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE053",
+    "name": "Fake Heating 053",
+    "station_type": "heating",
+    "spatial_factor": 1.73,
+    "lat": 46.1114,
+    "lon": 14.5488
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.5362,
+     46.0639
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE054",
+    "name": "Fake Traffic 054",
+    "station_type": "traffic",
+    "spatial_factor": 1.83,
+    "lat": 46.0639,
+    "lon": 14.5362
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.4637,
+     46.0893
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE055",
+    "name": "Fake Suburban 055",
+    "station_type": "suburban",
+    "spatial_factor": 1.26,
+    "lat": 46.0893,
+    "lon": 14.4637
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.5012,
+     46.0659
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE056",
+    "name": "Fake Heating 056",
+    "station_type": "heating",
+    "spatial_factor": 2.39,
+    "lat": 46.0659,
+    "lon": 14.5012
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.4775,
+     46.0608
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE057",
+    "name": "Fake Heating 057",
+    "station_type": "heating",
+    "spatial_factor": 1.44,
+    "lat": 46.0608,
+    "lon": 14.4775
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.5201,
+     46.0777
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE058",
+    "name": "Fake Background 058",
+    "station_type": "background",
+    "spatial_factor": 1.49,
+    "lat": 46.0777,
+    "lon": 14.5201
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.7,
+     46.0083
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE059",
+    "name": "Fake Heating 059",
+    "station_type": "heating",
+    "spatial_factor": 0.63,
+    "lat": 46.0083,
+    "lon": 14.7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.4907,
+     46.0586
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE060",
+    "name": "Fake Heating 060",
+    "station_type": "heating",
+    "spatial_factor": 1.37,
+    "lat": 46.0586,
+    "lon": 14.4907
    }
   },
   {
@@ -1142,15 +1088,15 @@
     "type": "Point",
     "coordinates": [
      14.4664,
-     45.9817
+     46.0405
     ]
    },
    "properties": {
-    "station_id": "FAKE064",
-    "name": "Fake Traffic 064",
+    "station_id": "FAKE061",
+    "name": "Fake Traffic 061",
     "station_type": "traffic",
-    "spatial_factor": 0.81,
-    "lat": 45.9817,
+    "spatial_factor": 2.16,
+    "lat": 46.0405,
     "lon": 14.4664
    }
   },
@@ -1159,395 +1105,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.5078,
-     46.0582
+     14.5984,
+     45.9773
     ]
    },
    "properties": {
-    "station_id": "FAKE065",
-    "name": "Fake Suburban 065",
-    "station_type": "suburban",
-    "spatial_factor": 2.87,
-    "lat": 46.0582,
-    "lon": 14.5078
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.5476,
-     46.0561
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE066",
-    "name": "Fake Heating 066",
+    "station_id": "FAKE062",
+    "name": "Fake Heating 062",
     "station_type": "heating",
-    "spatial_factor": 2.36,
-    "lat": 46.0561,
-    "lon": 14.5476
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.4821,
-     46.0236
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE067",
-    "name": "Fake Traffic 067",
-    "station_type": "traffic",
-    "spatial_factor": 2.05,
-    "lat": 46.0236,
-    "lon": 14.4821
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.5353,
-     46.0072
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE068",
-    "name": "Fake Traffic 068",
-    "station_type": "traffic",
-    "spatial_factor": 1.11,
-    "lat": 46.0072,
-    "lon": 14.5353
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.5253,
-     46.1159
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE069",
-    "name": "Fake Background 069",
-    "station_type": "background",
-    "spatial_factor": 1.08,
-    "lat": 46.1159,
-    "lon": 14.5253
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.6023,
-     46.1046
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE070",
-    "name": "Fake Suburban 070",
-    "station_type": "suburban",
-    "spatial_factor": 1.28,
-    "lat": 46.1046,
-    "lon": 14.6023
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.539,
-     46.0228
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE071",
-    "name": "Fake Heating 071",
-    "station_type": "heating",
-    "spatial_factor": 1.5,
-    "lat": 46.0228,
-    "lon": 14.539
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.4905,
-     45.9744
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE072",
-    "name": "Fake Heating 072",
-    "station_type": "heating",
-    "spatial_factor": 1.23,
-    "lat": 45.9744,
-    "lon": 14.4905
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.4619,
-     46.0494
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE073",
-    "name": "Fake Traffic 073",
-    "station_type": "traffic",
-    "spatial_factor": 1.22,
-    "lat": 46.0494,
-    "lon": 14.4619
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.5247,
-     46.0381
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE074",
-    "name": "Fake Heating 074",
-    "station_type": "heating",
-    "spatial_factor": 1.54,
-    "lat": 46.0381,
-    "lon": 14.5247
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.5588,
-     46.0224
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE075",
-    "name": "Fake Traffic 075",
-    "station_type": "traffic",
-    "spatial_factor": 2.02,
-    "lat": 46.0224,
-    "lon": 14.5588
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.5342,
-     46.0245
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE076",
-    "name": "Fake Background 076",
-    "station_type": "background",
-    "spatial_factor": 1.46,
-    "lat": 46.0245,
-    "lon": 14.5342
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.4878,
-     45.96
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE077",
-    "name": "Fake Traffic 077",
-    "station_type": "traffic",
-    "spatial_factor": 1.13,
-    "lat": 45.96,
-    "lon": 14.4878
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.4696,
-     46.0486
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE078",
-    "name": "Fake Heating 078",
-    "station_type": "heating",
-    "spatial_factor": 1.85,
-    "lat": 46.0486,
-    "lon": 14.4696
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.5456,
-     46.0985
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE079",
-    "name": "Fake Traffic 079",
-    "station_type": "traffic",
-    "spatial_factor": 1.54,
-    "lat": 46.0985,
-    "lon": 14.5456
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.5064,
-     46.076
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE080",
-    "name": "Fake Background 080",
-    "station_type": "background",
-    "spatial_factor": 1.8,
-    "lat": 46.076,
-    "lon": 14.5064
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.5265,
-     46.0518
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE081",
-    "name": "Fake Suburban 081",
-    "station_type": "suburban",
-    "spatial_factor": 0.75,
-    "lat": 46.0518,
-    "lon": 14.5265
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.38,
-     46.0803
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE082",
-    "name": "Fake Heating 082",
-    "station_type": "heating",
-    "spatial_factor": 0.7,
-    "lat": 46.0803,
-    "lon": 14.38
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.38,
-     46.0945
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE083",
-    "name": "Fake Traffic 083",
-    "station_type": "traffic",
-    "spatial_factor": 0.73,
-    "lat": 46.0945,
-    "lon": 14.38
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.5314,
-     46.1
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE084",
-    "name": "Fake Heating 084",
-    "station_type": "heating",
-    "spatial_factor": 1.33,
-    "lat": 46.1,
-    "lon": 14.5314
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.5557,
-     46.0709
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE085",
-    "name": "Fake Traffic 085",
-    "station_type": "traffic",
-    "spatial_factor": 2.52,
-    "lat": 46.0709,
-    "lon": 14.5557
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     14.5452,
-     46.1074
-    ]
-   },
-   "properties": {
-    "station_id": "FAKE086",
-    "name": "Fake Heating 086",
-    "station_type": "heating",
-    "spatial_factor": 1.04,
-    "lat": 46.1074,
-    "lon": 14.5452
+    "spatial_factor": 0.9,
+    "lat": 45.9773,
+    "lon": 14.5984
    }
   },
   {
@@ -1556,15 +1124,15 @@
     "type": "Point",
     "coordinates": [
      14.5316,
-     46.0592
+     46.0428
     ]
    },
    "properties": {
-    "station_id": "FAKE087",
-    "name": "Fake Heating 087",
-    "station_type": "heating",
-    "spatial_factor": 1.51,
-    "lat": 46.0592,
+    "station_id": "FAKE063",
+    "name": "Fake Traffic 063",
+    "station_type": "traffic",
+    "spatial_factor": 0.83,
+    "lat": 46.0428,
     "lon": 14.5316
    }
   },
@@ -1573,17 +1141,449 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.4651,
-     46.0493
+     14.4505,
+     46.0198
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE064",
+    "name": "Fake Traffic 064",
+    "station_type": "traffic",
+    "spatial_factor": 0.92,
+    "lat": 46.0198,
+    "lon": 14.4505
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.528,
+     46.0894
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE065",
+    "name": "Fake Background 065",
+    "station_type": "background",
+    "spatial_factor": 2.14,
+    "lat": 46.0894,
+    "lon": 14.528
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.4887,
+     46.0489
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE066",
+    "name": "Fake Traffic 066",
+    "station_type": "traffic",
+    "spatial_factor": 1.35,
+    "lat": 46.0489,
+    "lon": 14.4887
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.5311,
+     46.057
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE067",
+    "name": "Fake Traffic 067",
+    "station_type": "traffic",
+    "spatial_factor": 1.55,
+    "lat": 46.057,
+    "lon": 14.5311
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.4548,
+     46.1116
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE068",
+    "name": "Fake Suburban 068",
+    "station_type": "suburban",
+    "spatial_factor": 0.79,
+    "lat": 46.1116,
+    "lon": 14.4548
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.5282,
+     46.0602
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE069",
+    "name": "Fake Traffic 069",
+    "station_type": "traffic",
+    "spatial_factor": 2.07,
+    "lat": 46.0602,
+    "lon": 14.5282
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.5174,
+     46.0743
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE070",
+    "name": "Fake Traffic 070",
+    "station_type": "traffic",
+    "spatial_factor": 1.77,
+    "lat": 46.0743,
+    "lon": 14.5174
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.4646,
+     46.0513
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE071",
+    "name": "Fake Suburban 071",
+    "station_type": "suburban",
+    "spatial_factor": 1.29,
+    "lat": 46.0513,
+    "lon": 14.4646
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.5258,
+     46.0122
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE072",
+    "name": "Fake Heating 072",
+    "station_type": "heating",
+    "spatial_factor": 1.54,
+    "lat": 46.0122,
+    "lon": 14.5258
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.38,
+     46.0684
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE073",
+    "name": "Fake Heating 073",
+    "station_type": "heating",
+    "spatial_factor": 0.84,
+    "lat": 46.0684,
+    "lon": 14.38
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.4004,
+     46.0399
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE074",
+    "name": "Fake Background 074",
+    "station_type": "background",
+    "spatial_factor": 0.98,
+    "lat": 46.0399,
+    "lon": 14.4004
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.4716,
+     46.0832
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE075",
+    "name": "Fake Traffic 075",
+    "station_type": "traffic",
+    "spatial_factor": 1.04,
+    "lat": 46.0832,
+    "lon": 14.4716
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.4717,
+     45.9906
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE076",
+    "name": "Fake Traffic 076",
+    "station_type": "traffic",
+    "spatial_factor": 1.11,
+    "lat": 45.9906,
+    "lon": 14.4717
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.4401,
+     46.02
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE077",
+    "name": "Fake Traffic 077",
+    "station_type": "traffic",
+    "spatial_factor": 1.44,
+    "lat": 46.02,
+    "lon": 14.4401
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.524,
+     46.0807
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE078",
+    "name": "Fake Traffic 078",
+    "station_type": "traffic",
+    "spatial_factor": 1.18,
+    "lat": 46.0807,
+    "lon": 14.524
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.4503,
+     46.034
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE079",
+    "name": "Fake Traffic 079",
+    "station_type": "traffic",
+    "spatial_factor": 1.25,
+    "lat": 46.034,
+    "lon": 14.4503
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.38,
+     46.0153
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE080",
+    "name": "Fake Heating 080",
+    "station_type": "heating",
+    "spatial_factor": 1.28,
+    "lat": 46.0153,
+    "lon": 14.38
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.545,
+     46.0904
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE081",
+    "name": "Fake Traffic 081",
+    "station_type": "traffic",
+    "spatial_factor": 1.23,
+    "lat": 46.0904,
+    "lon": 14.545
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.6426,
+     46.0602
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE082",
+    "name": "Fake Heating 082",
+    "station_type": "heating",
+    "spatial_factor": 1.03,
+    "lat": 46.0602,
+    "lon": 14.6426
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.5612,
+     46.0241
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE083",
+    "name": "Fake Background 083",
+    "station_type": "background",
+    "spatial_factor": 0.79,
+    "lat": 46.0241,
+    "lon": 14.5612
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.5326,
+     46.0335
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE084",
+    "name": "Fake Background 084",
+    "station_type": "background",
+    "spatial_factor": 1.45,
+    "lat": 46.0335,
+    "lon": 14.5326
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.4228,
+     46.0001
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE085",
+    "name": "Fake Background 085",
+    "station_type": "background",
+    "spatial_factor": 1.05,
+    "lat": 46.0001,
+    "lon": 14.4228
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.5808,
+     46.0616
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE086",
+    "name": "Fake Background 086",
+    "station_type": "background",
+    "spatial_factor": 1.43,
+    "lat": 46.0616,
+    "lon": 14.5808
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.577,
+     46.0452
+    ]
+   },
+   "properties": {
+    "station_id": "FAKE087",
+    "name": "Fake Heating 087",
+    "station_type": "heating",
+    "spatial_factor": 1.42,
+    "lat": 46.0452,
+    "lon": 14.577
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.4269,
+     46.0596
     ]
    },
    "properties": {
     "station_id": "FAKE088",
-    "name": "Fake Heating 088",
-    "station_type": "heating",
-    "spatial_factor": 1.29,
-    "lat": 46.0493,
-    "lon": 14.4651
+    "name": "Fake Suburban 088",
+    "station_type": "suburban",
+    "spatial_factor": 1.17,
+    "lat": 46.0596,
+    "lon": 14.4269
    }
   },
   {
@@ -1591,17 +1591,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.4225,
-     46.0439
+     14.5068,
+     46.0213
     ]
    },
    "properties": {
     "station_id": "FAKE089",
-    "name": "Fake Background 089",
-    "station_type": "background",
-    "spatial_factor": 0.83,
-    "lat": 46.0439,
-    "lon": 14.4225
+    "name": "Fake Suburban 089",
+    "station_type": "suburban",
+    "spatial_factor": 1.85,
+    "lat": 46.0213,
+    "lon": 14.5068
    }
   },
   {
@@ -1609,17 +1609,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.6591,
-     46.1431
+     14.38,
+     46.15
     ]
    },
    "properties": {
     "station_id": "FAKE090",
-    "name": "Fake Traffic 090",
-    "station_type": "traffic",
-    "spatial_factor": 0.5,
-    "lat": 46.1431,
-    "lon": 14.6591
+    "name": "Fake Suburban 090",
+    "station_type": "suburban",
+    "spatial_factor": 0.8,
+    "lat": 46.15,
+    "lon": 14.38
    }
   },
   {
@@ -1627,17 +1627,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.4956,
-     46.0966
+     14.5545,
+     46.0672
     ]
    },
    "properties": {
     "station_id": "FAKE091",
-    "name": "Fake Background 091",
-    "station_type": "background",
-    "spatial_factor": 1.09,
-    "lat": 46.0966,
-    "lon": 14.4956
+    "name": "Fake Heating 091",
+    "station_type": "heating",
+    "spatial_factor": 1.44,
+    "lat": 46.0672,
+    "lon": 14.5545
    }
   },
   {
@@ -1645,17 +1645,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.4677,
-     46.0668
+     14.4918,
+     45.9995
     ]
    },
    "properties": {
     "station_id": "FAKE092",
-    "name": "Fake Traffic 092",
-    "station_type": "traffic",
-    "spatial_factor": 3.24,
-    "lat": 46.0668,
-    "lon": 14.4677
+    "name": "Fake Heating 092",
+    "station_type": "heating",
+    "spatial_factor": 1.15,
+    "lat": 45.9995,
+    "lon": 14.4918
    }
   },
   {
@@ -1663,17 +1663,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.5216,
-     46.0979
+     14.4843,
+     46.1154
     ]
    },
    "properties": {
     "station_id": "FAKE093",
-    "name": "Fake Heating 093",
-    "station_type": "heating",
-    "spatial_factor": 0.83,
-    "lat": 46.0979,
-    "lon": 14.5216
+    "name": "Fake Background 093",
+    "station_type": "background",
+    "spatial_factor": 0.91,
+    "lat": 46.1154,
+    "lon": 14.4843
    }
   },
   {
@@ -1681,17 +1681,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.4891,
-     46.0477
+     14.5367,
+     46.0282
     ]
    },
    "properties": {
     "station_id": "FAKE094",
-    "name": "Fake Heating 094",
-    "station_type": "heating",
-    "spatial_factor": 1.16,
-    "lat": 46.0477,
-    "lon": 14.4891
+    "name": "Fake Traffic 094",
+    "station_type": "traffic",
+    "spatial_factor": 2.48,
+    "lat": 46.0282,
+    "lon": 14.5367
    }
   },
   {
@@ -1699,17 +1699,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.5221,
-     46.0798
+     14.5035,
+     46.0952
     ]
    },
    "properties": {
     "station_id": "FAKE095",
     "name": "Fake Heating 095",
     "station_type": "heating",
-    "spatial_factor": 2.11,
-    "lat": 46.0798,
-    "lon": 14.5221
+    "spatial_factor": 1.04,
+    "lat": 46.0952,
+    "lon": 14.5035
    }
   },
   {
@@ -1717,17 +1717,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.4096,
-     45.96
+     14.574,
+     46.0553
     ]
    },
    "properties": {
     "station_id": "FAKE096",
-    "name": "Fake Background 096",
-    "station_type": "background",
-    "spatial_factor": 1.12,
-    "lat": 45.96,
-    "lon": 14.4096
+    "name": "Fake Heating 096",
+    "station_type": "heating",
+    "spatial_factor": 1.47,
+    "lat": 46.0553,
+    "lon": 14.574
    }
   },
   {
@@ -1735,17 +1735,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.5396,
-     46.0789
+     14.4708,
+     45.96
     ]
    },
    "properties": {
     "station_id": "FAKE097",
     "name": "Fake Suburban 097",
     "station_type": "suburban",
-    "spatial_factor": 2.08,
-    "lat": 46.0789,
-    "lon": 14.5396
+    "spatial_factor": 0.57,
+    "lat": 45.96,
+    "lon": 14.4708
    }
   },
   {
@@ -1753,17 +1753,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.5104,
-     46.0439
+     14.5166,
+     45.9967
     ]
    },
    "properties": {
     "station_id": "FAKE098",
-    "name": "Fake Traffic 098",
-    "station_type": "traffic",
-    "spatial_factor": 1.63,
-    "lat": 46.0439,
-    "lon": 14.5104
+    "name": "Fake Heating 098",
+    "station_type": "heating",
+    "spatial_factor": 1.09,
+    "lat": 45.9967,
+    "lon": 14.5166
    }
   },
   {
@@ -1771,17 +1771,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.412,
-     46.0561
+     14.4384,
+     46.1145
     ]
    },
    "properties": {
     "station_id": "FAKE099",
-    "name": "Fake Traffic 099",
-    "station_type": "traffic",
-    "spatial_factor": 1.4,
-    "lat": 46.0561,
-    "lon": 14.412
+    "name": "Fake Suburban 099",
+    "station_type": "suburban",
+    "spatial_factor": 0.8,
+    "lat": 46.1145,
+    "lon": 14.4384
    }
   },
   {
@@ -1789,17 +1789,17 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     14.5621,
-     46.0929
+     14.531,
+     46.0859
     ]
    },
    "properties": {
     "station_id": "FAKE100",
-    "name": "Fake Heating 100",
-    "station_type": "heating",
-    "spatial_factor": 1.77,
-    "lat": 46.0929,
-    "lon": 14.5621
+    "name": "Fake Background 100",
+    "station_type": "background",
+    "spatial_factor": 2.02,
+    "lat": 46.0859,
+    "lon": 14.531
    }
   }
  ]
