@@ -87,8 +87,10 @@ def build_obs():
 
 	if (DATA / "fake_stations_lj_urno.csv.gz").exists():
 		fake = read("fake_stations_lj_urno.csv.gz")
-		parts.append(melt_pm(fake, "fake.stations", {"pm25": "PM2.5", "pm10": "PM10"}))
-		
+		fake_cols = {c: p for c, p in [("pm25", "PM2.5"), ("pm10", "PM10"), ("no2", "NO2"), ("o3", "O3")] if c in fake.columns}
+		if fake_cols:
+			parts.append(melt_pm(fake, "fake.stations", fake_cols))
+	
 	obs = pd.concat(parts, ignore_index=True).dropna(subset=["value"])
 	obs["station_id"] = obs["station_id"].astype(str)
 	obs["value"] = obs["value"].clip(lower=0)
